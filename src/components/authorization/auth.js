@@ -3,7 +3,9 @@ import axios from 'axios'
 import { useState } from 'react'
 import styles from './auth.module.css'
 
-const url_API = 'http://10.0.0.1/admin.login'
+const url_APIPost = 'http://176.108.249.249/admin.login'
+const url_APIGet = 'http://176.108.249.249/quiz.questions_list?theme_id=1'
+axios.defaults.withCredentials = true
 
 const Auth = () => {
   const [email, setUsername] = useState('')
@@ -14,7 +16,7 @@ const Auth = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const instance = axios.create({
-      baseURL: url_API,
+      baseURL: url_APIPost,
       timeout: 10000,
       headers: {
         accept: 'application/json',
@@ -26,20 +28,21 @@ const Auth = () => {
         email,
         password,
       }
-      const user = await instance.post(url_API, loginBody)
+      const user = await instance.post(url_APIPost, loginBody)
       console.log(user.data)
       setIsActive(true)
     } catch (err) {
       setIsActive(false)
       setError(err.message)
     }
+    if (document.cookie) {
+      console.log(document.cookie)
+    }
   }
 
   const handleClick = () => {
     try {
-      const userData = axios.get(
-        'http://10.0.0.1/quiz.questions_list?theme_id=1'
-      )
+      const userData = axios.get(url_APIGet)
       console.log(userData.data)
     } catch (e) {
       setError(e.message)
