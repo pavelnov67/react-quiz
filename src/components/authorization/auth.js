@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import styles from './auth.module.css'
 
-const base_URL = 'http://176.108.249.249'
+const base_URL = 'http://0.0.0.0:4545/api'
 const url_APIPost = `${base_URL}/admin.login`
 const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
 axios.defaults.withCredentials = true
