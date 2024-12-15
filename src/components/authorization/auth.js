@@ -1,18 +1,19 @@
 import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './auth.module.css'
 
-const base_URL = 'http://176.108.249.249'
+export const base_URL = 'http://localhost:8000'
 const url_APIPost = `${base_URL}/admin.login`
-const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
+export const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
 axios.defaults.withCredentials = true
 
 const Auth = () => {
   const [email, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [isActive, setIsActive] = useState(false)
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -31,28 +32,18 @@ const Auth = () => {
       }
       const user = await instance.post(url_APIPost, loginBody)
       console.log(user.data)
-      setIsActive(true)
+      navigate('admin_page')
     } catch (err) {
-      setIsActive(false)
       setError(err.message)
-    }
-    if (document.cookie) {
-      console.log(document.cookie)
-    }
-  }
-
-  const handleClick = () => {
-    try {
-      const userData = axios.get(url_APIGet)
-      console.log(userData.data)
-    } catch (e) {
-      setError(e.message)
     }
   }
 
   return (
     <div className={styles.authFormContainer}>
-      <form onSubmit={handleSubmit}>
+      <form
+        className={styles.authForm}
+        onSubmit={handleSubmit}
+      >
         <h1>Auth Form</h1>
         <input
           placeholder="Enter email"
@@ -66,17 +57,6 @@ const Auth = () => {
         <p className={styles.error_message}>{error}</p>
         <button type="submit">LogIn</button>
       </form>
-      {isActive ? (
-        <button
-          className="getQbutton"
-          type="button"
-          onClick={handleClick}
-        >
-          Get questions
-        </button>
-      ) : (
-        ''
-      )}
     </div>
   )
 }

@@ -28,30 +28,6 @@ button:hover {
   background-color: #94bd0267;
 }
 
-input {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 80%;
-  font-size: 17px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 10px;
-  max-width: 20em;
-  margin: auto;
-  margin-top: 13em;
-  padding: 19px;
-  box-shadow: 5px 5px 10px grey;
-  box-sizing: border-box;
-}
-
 .getQbutton {
   margin-top: 20px;
   max-width: 150px;
