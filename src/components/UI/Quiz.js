@@ -5,39 +5,29 @@ import { url_APIGet } from '../authorization/auth'
 import Question from './Question'
 
 const Quiz = (props) => {
-  const [questions, setQuestions] = useState({})
+  const [isActive, setIsActive] = useState(false)
 
-  const handleClick = async () => {
-    try {
-      const data = await axios.get(url_APIGet)
-      setQuestions(data.status)
-      console.log(questions)
-    } catch (e) {
-      console.log(e)
-    }
+  const handleClick = () => {
+    setIsActive(true)
   }
 
   return (
     <>
-      <div>
-        <button
-          className="getQbutton"
-          type="button"
-          onClick={handleClick}
-        >
-          Get questions
-        </button>
-      </div>
-      <div></div>
+      {isActive ? (
+        <Question />
+      ) : (
+        <div>
+          <button
+            className="getQbutton"
+            type="button"
+            onClick={handleClick}
+          >
+            Get questions
+          </button>
+        </div>
+      )}
     </>
   )
 }
 
 export default Quiz
-
-/*        {questions.map((question) => (
-          <Question
-            {...question}
-            key={uuidv4()}
-          />
-        ))}*/

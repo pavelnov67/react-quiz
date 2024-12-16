@@ -13,7 +13,6 @@ function App() {
         <Routes>
           <Route
             path="/"
-            index={true}
             element={<Auth />}
           />
           <Route
