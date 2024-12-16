@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import styles from './adminPage.module.css'
 import { base_URL } from '../../authorization/auth'
 
@@ -19,6 +21,7 @@ const AddQuestionPage = (props) => {
   const [answer5, setAnsver5] = useState('')
   const [points5, setPoints5] = useState('')
   const [error, setError] = useState('')
+  const notify = () => toast('Вопрос успешно добавлен')
 
   const handleReset = () => {
     setQuestion('')
@@ -78,7 +81,7 @@ const AddQuestionPage = (props) => {
       )
       console.log(questionForm.data)
       handleReset()
-      alert('Вопрос добавлен успешно')
+      notify()
     } catch (err) {
       setError(err.message)
     }
@@ -86,6 +89,10 @@ const AddQuestionPage = (props) => {
 
   return (
     <div className={styles.adminFormContainer}>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+      />
       <form
         className={styles.adminForm}
         onSubmit={handleSubmit}
