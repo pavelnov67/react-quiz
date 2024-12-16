@@ -1,0 +1,12 @@
+version: 'v2.22.0-desktop.2'
+services:
+  ui:
+    build: ./react-quiz
+    container_name: react-ui
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./react-quiz:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
