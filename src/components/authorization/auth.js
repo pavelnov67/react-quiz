@@ -32,7 +32,7 @@ const Auth = () => {
       }
       const user = await instance.post(url_APIPost, loginBody)
       console.log(user.data)
-      navigate('admin_page')
+      navigate('main_layout')
     } catch (err) {
       setError(err.message)
     }
