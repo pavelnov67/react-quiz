@@ -21,7 +21,10 @@ const AddQuestionPage = (props) => {
   const [answer5, setAnsver5] = useState('')
   const [points5, setPoints5] = useState('')
   const [error, setError] = useState('')
-  const notify = () => toast('Вопрос успешно добавлен')
+  const [addSixQtn, setAddSixQtn] = useState(false)
+  const [addSevenQtn, setAddSevenQtn] = useState(false)
+  const [count, setCount] = useState(0)
+  const notify = () => toast.info('Вопрос успешно добавлен')
 
   const handleReset = () => {
     setQuestion('')
@@ -35,6 +38,17 @@ const AddQuestionPage = (props) => {
     setPoints4('')
     setAnsver5('')
     setPoints5('')
+    setAddSixQtn('')
+    setAddSevenQtn('')
+    setCount(0)
+  }
+
+  const handleAddQtn = () => {
+    setAddSixQtn(true)
+    setCount(count + 1)
+    if (count >= 1) {
+      setAddSevenQtn(true)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -201,15 +215,61 @@ const AddQuestionPage = (props) => {
             />
           </div>
         </div>
+        {addSixQtn && (
+          <div className={styles.inputContainer}>
+            <label>Введите 6й по популярности вариант ответа</label>
+            <div>
+              <input
+                className={styles.ansverInput}
+                placeholder="Введите текст"
+                value={answer5}
+                onChange={(e) => setAnsver5(e.target.value)}
+              />
+              <input
+                type="text"
+                className={styles.pointInput}
+                placeholder="Баллы"
+                value={points5}
+                onChange={(e) => setPoints5(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
+        {addSevenQtn && (
+          <div className={styles.inputContainer}>
+            <label>Введите 7й по популярности вариант ответа</label>
+            <div>
+              <input
+                className={styles.ansverInput}
+                placeholder="Введите текст"
+                value={answer5}
+                onChange={(e) => setAnsver5(e.target.value)}
+              />
+              <input
+                type="text"
+                className={styles.pointInput}
+                placeholder="Баллы"
+                value={points5}
+                onChange={(e) => setPoints5(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
         <p className={styles.error_message}>{error}</p>
         <div className={styles.buttonContainer}>
+          <button
+            type="button"
+            onClick={handleAddQtn}
+          >
+            Добавить вариант
+          </button>
+          <button type="submit">Сохранить</button>
           <button
             type="button"
             onClick={handleReset}
           >
             Сбросить всё
           </button>
-          <button type="submit">Сохранить</button>
         </div>
       </form>
     </div>
