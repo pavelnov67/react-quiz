@@ -95,6 +95,7 @@ const AddQuestionPage = (props) => {
           <textarea
             placeholder="Введите текст"
             className={styles.questionInput}
+            value={question}
             onChange={(e) => setQuestion(e.target.value)}
             rows="5"
             cols="33"
