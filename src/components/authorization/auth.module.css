@@ -39,3 +39,15 @@
   max-width: 80%;
   font-size: 17px;
 }
+
+.authFormContainer button {
+  margin-top: 5px;
+  max-width: 150px;
+  font-size: 18px;
+  background-color: #94bd02e5;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+}
