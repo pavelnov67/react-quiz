@@ -4,6 +4,8 @@ import { useState } from 'react'
 import styles from './adminPage.module.css'
 import { base_URL } from '../../authorization/auth'
 
+axios.defaults.withCredentials = true
+
 const AddQuestionPage = (props) => {
   const [question, setQuestion] = useState('')
   const [answer1, setAnsver1] = useState('')

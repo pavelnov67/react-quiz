@@ -1,5 +1,6 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Auth from './components/authorization/auth'
+import MainLayout from './components/UI/adminPage/MainLayout'
 import Quiz from './components/UI/Quiz'
 import AddQuestionPage from './components/UI/adminPage/AddQuestionPage'
 import NotFound from './components/UI/NotFound'
@@ -16,17 +17,22 @@ function App() {
             element={<Auth />}
           />
           <Route
-            path="quiz"
-            element={<Quiz />}
-          />
-          <Route
-            path="add_question_page"
-            element={<AddQuestionPage />}
-          />
-          <Route
-            path="*"
-            element={<NotFound />}
-          />
+            path="main_layout"
+            element={<MainLayout />}
+          >
+            <Route
+              path="quiz"
+              element={<Quiz />}
+            />
+            <Route
+              path="add_question_page"
+              element={<AddQuestionPage />}
+            />
+            <Route
+              path="*"
+              element={<NotFound />}
+            />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>
