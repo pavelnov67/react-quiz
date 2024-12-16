@@ -4,8 +4,8 @@ import styles from './adminPage.module.css'
 const Menu = (props) => {
   return (
     <nav className={styles.home_anchors}>
-      <Link to="add_question_page">Add Question Page</Link>
-      <Link to="quiz">Quiz Page</Link>
+      <Link to="add_question_page">Добавление вопроса</Link>
+      <Link to="quiz">Игра</Link>
     </nav>
   )
 }

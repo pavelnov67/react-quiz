@@ -120,3 +120,15 @@
   width: 80%;
   justify-content: space-around;
 }
+
+.buttonContainer button {
+  margin-top: 5px;
+  max-width: 150px;
+  font-size: 18px;
+  background-color: #94bd02e5;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+}
