@@ -1,7 +1,7 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Auth from './components/authorization/auth'
 import Quiz from './components/UI/Quiz'
-import AdminPage from './components/UI/adminPage/AdminPage'
+import AddQuestionPage from './components/UI/adminPage/AddQuestionPage'
 import NotFound from './components/UI/NotFound'
 import './App.css'
 
@@ -20,8 +20,8 @@ function App() {
             element={<Quiz />}
           />
           <Route
-            path="admin_page"
-            element={<AdminPage />}
+            path="add_question_page"
+            element={<AddQuestionPage />}
           />
           <Route
             path="*"
