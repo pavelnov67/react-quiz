@@ -20,6 +20,20 @@ const AddQuestionPage = (props) => {
   const [points5, setPoints5] = useState('')
   const [error, setError] = useState('')
 
+  const handleReset = () => {
+    setQuestion('')
+    setAnsver1('')
+    setPoints1('')
+    setAnsver2('')
+    setPoints2('')
+    setAnsver3('')
+    setPoints3('')
+    setAnsver4('')
+    setPoints4('')
+    setAnsver5('')
+    setPoints5('')
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const instance = axios.create({
@@ -63,23 +77,11 @@ const AddQuestionPage = (props) => {
         formBody
       )
       console.log(questionForm.data)
+      handleReset()
+      alert('Вопрос добавлен успешно')
     } catch (err) {
       setError(err.message)
     }
-  }
-
-  const handleReset = () => {
-    setQuestion('')
-    setAnsver1('')
-    setPoints1('')
-    setAnsver2('')
-    setPoints2('')
-    setAnsver3('')
-    setPoints3('')
-    setAnsver4('')
-    setPoints4('')
-    setAnsver5('')
-    setPoints5('')
   }
 
   return (
