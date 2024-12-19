@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import Question from './Question'
@@ -11,19 +11,14 @@ const Quiz = (props) => {
   const [isActive, setIsActive] = useState(false)
   const [questionsData, setQuestionsData] = useState({})
 
-  useEffect(() => {
-    ;(async function () {
-      try {
-        const data = await axios.get(url_APIGet)
-        setQuestionsData(data.data.data.questions)
-      } catch (e) {
-        console.log(e)
-      }
-    })()
-  }, [isActive])
-
-  const handleClick = () => {
-    setIsActive(true)
+  const handleClick = async () => {
+    try {
+      const data = await axios.get(url_APIGet)
+      setQuestionsData(data.data.data.questions)
+      setIsActive(true)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   const handleClickThemes = () => {
