@@ -1,3 +1,7 @@
+.mainLayoutHR {
+  display: none;
+}
+
 .question_container {
   width: 100%;
   display: flex;
@@ -25,6 +29,17 @@
   text-decoration: none;
   font-size: 35px;
   padding: 5px;
+}
+
+@media (max-width: 770px) {
+  .home_anchors a {
+    font-size: 25px;
+  }
+  .mainLayoutHR {
+    display: block;
+    border-left: 1px solid #ccc;
+    height: 40px;
+  }
 }
 
 .home_anchors a:hover {
