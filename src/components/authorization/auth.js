@@ -10,7 +10,7 @@ export const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
 axios.defaults.withCredentials = true
 
 const Auth = () => {
-  const [email, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
@@ -31,7 +31,7 @@ const Auth = () => {
         password,
       }
       const user = await instance.post(url_APIPost, loginBody)
-      console.log(user.data)
+      setEmail(user)
       navigate('main_layout')
     } catch (err) {
       setError(err.message)
@@ -47,7 +47,7 @@ const Auth = () => {
         <h1>Auth Form</h1>
         <input
           placeholder="Enter email"
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           placeholder="Enter password"
