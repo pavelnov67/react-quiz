@@ -1,7 +1,3 @@
-.mainLayoutHR {
-  display: none;
-}
-
 .question_container {
   width: 100%;
   display: flex;
@@ -34,11 +30,6 @@
 @media (max-width: 770px) {
   .home_anchors a {
     font-size: 25px;
-  }
-  .mainLayoutHR {
-    display: block;
-    border-left: 1px solid #ccc;
-    height: 40px;
   }
 }
 
