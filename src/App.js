@@ -1,7 +1,7 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Auth from './components/authorization/auth'
 import MainLayout from './components/UI/adminPage/MainLayout'
-import Quiz from './components/UI/Quiz'
+import Quiz from './components/UI/game/Quiz'
 import AddQuestionPage from './components/UI/adminPage/AddQuestionPage'
 import NotFound from './components/UI/NotFound'
 import './App.css'
