@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid'
-import { url_APIGet } from '../authorization/auth'
+import { useState } from 'react'
 import Question from './Question'
-import styles from './ui.module.css'
+import styles from '../ui.module.css'
 
 const Quiz = (props) => {
   const [isActive, setIsActive] = useState(false)
