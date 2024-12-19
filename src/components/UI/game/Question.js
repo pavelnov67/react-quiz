@@ -1,8 +1,7 @@
 import styles from './question.module.css'
-import data from '../../data/data.json'
 
-const Question = (props) => {
-  const questions = data.data.questions
+const Question = ({ questionsData }) => {
+  const questions = questionsData
 
   return (
     <main className={styles.questions_container}>
