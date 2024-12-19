@@ -1,10 +1,18 @@
 .quiz_container {
   display: flex;
   justify-content: center;
+  margin: 10px;
+  gap: 10px;
+}
+
+@media (max-width: 770px) {
+  .quiz_container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .start_quiz_btn {
-  margin-top: 20px;
   max-width: 250px;
   font-size: 18px;
   background-color: #94bd02e5;
