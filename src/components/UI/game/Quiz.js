@@ -3,11 +3,11 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import Question from './Question'
 import styles from '../ui.module.css'
-import { base_URL } from '../../authorization/auth'
+import { base_URL } from '../../authorization/Auth'
 
 const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
 
-const Quiz = (props) => {
+const Quiz = () => {
   const [isActive, setIsActive] = useState(false)
   const [questionsData, setQuestionsData] = useState({})
 
@@ -25,10 +25,23 @@ const Quiz = (props) => {
     toast.info('Этот раздел ещё в разработке')
   }
 
+  const isActiveToggle = () => {
+    setIsActive(!isActive)
+  }
+
   return (
     <>
       {isActive ? (
-        <Question questionsData={questionsData} />
+        <div>
+          <button
+            className={styles.start_quiz_btn}
+            type="button"
+            onClick={isActiveToggle}
+          >
+            Назад
+          </button>
+          <Question questionsData={questionsData} />
+        </div>
       ) : (
         <div className={styles.quiz_container}>
           <ToastContainer

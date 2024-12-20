@@ -44,18 +44,22 @@ const Auth = () => {
         className={styles.authForm}
         onSubmit={handleSubmit}
       >
-        <h1>Auth Form</h1>
-        <input
-          placeholder="Enter email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          placeholder="Enter password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <h1>Авторизация</h1>
+        <div className={styles.form_inputs}>
+          <label>Email</label>
+          <input
+            placeholder="Введите email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label>Пароль</label>
+          <input
+            placeholder="Введите пароль"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <p className={styles.error_message}>{error}</p>
-        <button type="submit">LogIn</button>
+        <button type="submit">Войти</button>
       </form>
     </div>
   )

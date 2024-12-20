@@ -31,6 +31,10 @@
   .home_anchors a {
     font-size: 25px;
   }
+  .home_anchors {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .home_anchors a:hover {
