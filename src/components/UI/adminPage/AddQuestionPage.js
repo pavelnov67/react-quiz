@@ -255,14 +255,18 @@ const AddQuestionPage = () => {
             </div>
           </div>
         )}
+        {setAddSevenQtn && (
+          <div className={styles.addAnswerBtn}>
+            <button
+              type="button"
+              onClick={handleAddQtn}
+            >
+              +
+            </button>
+          </div>
+        )}
         <p className={styles.error_message}>{error}</p>
         <div className={styles.buttonContainer}>
-          <button
-            type="button"
-            onClick={handleAddQtn}
-          >
-            Добавить вариант
-          </button>
           <button type="submit">Сохранить</button>
           <button
             type="button"
