@@ -34,7 +34,7 @@ const Quiz = () => {
       {isActive ? (
         <div>
           <button
-            className={styles.start_quiz_btn}
+            className={styles.back_to_menu_btn}
             type="button"
             onClick={isActiveToggle}
           >
