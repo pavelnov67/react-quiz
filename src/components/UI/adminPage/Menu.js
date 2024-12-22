@@ -4,7 +4,7 @@ import styles from './adminPage.module.css'
 
 const Menu = () => {
   return (
-    <div>
+    <div className={styles.menu_container}>
       <header>
         <h2>Страница администратора</h2>
       </header>
