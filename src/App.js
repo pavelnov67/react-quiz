@@ -1,8 +1,9 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import Auth from './components/authorization/auth'
+import Auth from './components/authorization/Auth'
 import MainLayout from './components/UI/adminPage/MainLayout'
 import Quiz from './components/UI/game/Quiz'
 import AddQuestionPage from './components/UI/adminPage/AddQuestionPage'
+import ActiveGames from './components/UI/adminPage/ActiveGames'
 import NotFound from './components/UI/NotFound'
 import './App.css'
 
@@ -22,6 +23,10 @@ function App() {
             <Route
               path="quiz"
               element={<Quiz />}
+            />
+            <Route
+              path="active_games"
+              element={<ActiveGames />}
             />
             <Route
               path="add_question_page"

@@ -4,11 +4,11 @@ import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import styles from './adminPage.module.css'
-import { base_URL } from '../../authorization/auth'
+import { base_URL } from '../../authorization/Auth'
 
 axios.defaults.withCredentials = true
 
-const AddQuestionPage = (props) => {
+const AddQuestionPage = () => {
   const [question, setQuestion] = useState('')
   const [answer1, setAnsver1] = useState('')
   const [points1, setPoints1] = useState('')
@@ -255,14 +255,18 @@ const AddQuestionPage = (props) => {
             </div>
           </div>
         )}
+        {setAddSevenQtn && (
+          <div className={styles.addAnswerBtn}>
+            <button
+              type="button"
+              onClick={handleAddQtn}
+            >
+              +
+            </button>
+          </div>
+        )}
         <p className={styles.error_message}>{error}</p>
         <div className={styles.buttonContainer}>
-          <button
-            type="button"
-            onClick={handleAddQtn}
-          >
-            Добавить вариант
-          </button>
           <button type="submit">Сохранить</button>
           <button
             type="button"

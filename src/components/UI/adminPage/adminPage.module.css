@@ -7,10 +7,6 @@
   gap: 10px;
 }
 
-.question_container hr {
-  width: 30%;
-}
-
 .home_anchors {
   display: flex;
   flex-direction: row;
@@ -24,19 +20,25 @@
   color: #fff;
   text-decoration: none;
   font-size: 35px;
-  padding: 5px;
+  padding: 10px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 
 @media (max-width: 770px) {
   .home_anchors a {
     font-size: 25px;
   }
+  .home_anchors {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .home_anchors a:hover {
   background-color: rgb(35, 35, 87);
   border-radius: 3px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .adminFormContainer {
@@ -52,8 +54,7 @@
   justify-content: center;
   gap: 10px;
   border-radius: 10px;
-  margin: auto;
-  margin-top: 1em;
+  margin: 20px;
   padding: 19px;
   box-shadow: 5px 5px 10px grey;
   box-sizing: border-box;
@@ -137,4 +138,29 @@
   cursor: pointer;
   padding: 10px;
   border: none;
+}
+.buttonContainer button:hover {
+  background-color: #b2e400e5;
+}
+
+.addAnswerBtn {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: end;
+}
+
+.addAnswerBtn button {
+  margin-top: 5px;
+  max-width: 150px;
+  font-size: 18px;
+  background-color: #94bd02e5;
+  color: #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 7px;
+  border: none;
+}
+.addAnswerBtn button:hover {
+  background-color: #b2e400e5;
 }
