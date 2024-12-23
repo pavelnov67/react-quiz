@@ -26,15 +26,12 @@ header {
 .sidebar ul {
   display: flex;
   flex-direction: column;
-  justify-content: left;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .sidebar li {
-  padding: 8px;
-  border-bottom: 3px solid rgb(35, 35, 87);
   border-radius: 5px;
 }
 
@@ -43,10 +40,22 @@ header {
 }
 
 .sidebar a {
+  width: 100%;
+}
+
+.anchor_btn {
+  font-size: 18px;
   text-decoration: none;
   color: #ffffff;
-  font-size: 18px;
+  text-align: start;
+  width: 100%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
   padding: 10px;
+}
+
+.anchor_btn:hover {
+  background-color: #f1f1f115;
 }
 
 .content {
