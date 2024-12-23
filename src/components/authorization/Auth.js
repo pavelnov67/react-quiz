@@ -3,10 +3,9 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './auth.module.css'
+import { base_URL } from '../variables/vars'
 
-export const base_URL = 'http://localhost:8000'
 const url_APIPost = `${base_URL}/admin.login`
-export const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
 axios.defaults.withCredentials = true
 
 const Auth = () => {

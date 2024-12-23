@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import styles from './adminPage.module.css'
+import styles from './UI/adminPage/adminPage.module.css'
 
 const Menu = () => {
   return (
@@ -12,13 +12,21 @@ const Menu = () => {
         <div className={styles.sidebar}>
           <ul>
             <li>
-              <Link to="add_question_page">Добавление вопроса</Link>
+              <Link to="add_question_page">
+                <button className={styles.anchor_btn}>
+                  Добавление вопроса
+                </button>
+              </Link>
             </li>
             <li>
-              <Link to="quiz">Инфо</Link>
+              <Link to="quiz">
+                <button className={styles.anchor_btn}>Инфо</button>
+              </Link>
             </li>
             <li>
-              <Link to="active_games">Активные игры</Link>
+              <Link to="active_games">
+                <button className={styles.anchor_btn}>Активные игры</button>
+              </Link>
             </li>
           </ul>
         </div>

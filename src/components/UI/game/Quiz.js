@@ -3,7 +3,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import Question from './Question'
 import styles from '../ui.module.css'
-import { base_URL } from '../../authorization/Auth'
+import { base_URL } from '../../variables/vars'
 
 const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
 

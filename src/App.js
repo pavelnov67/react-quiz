@@ -1,10 +1,10 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Auth from './components/authorization/Auth'
-import MainLayout from './components/UI/adminPage/MainLayout'
+import MainLayout from './components/MainLayout'
 import Quiz from './components/UI/game/Quiz'
 import AddQuestionPage from './components/UI/adminPage/AddQuestionPage'
 import ActiveGames from './components/UI/adminPage/ActiveGames'
-import NotFound from './components/UI/NotFound'
+import NotFound from './components/NotFound'
 import './App.css'
 
 function App() {

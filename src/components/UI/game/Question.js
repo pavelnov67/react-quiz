@@ -1,6 +1,6 @@
 import axios from 'axios'
 import styles from './question.module.css'
-import { base_URL } from '../../authorization/Auth'
+import { base_URL } from '../../variables/vars'
 
 const Question = ({ questionsData, reFetch }) => {
   const questions = questionsData
