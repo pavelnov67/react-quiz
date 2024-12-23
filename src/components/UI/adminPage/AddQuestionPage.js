@@ -59,124 +59,100 @@ const AddQuestionPage = () => {
     }
   }
 
-  /*const formBody = 
-  try {
-    if (!setAddSixQtn) {
-      const formBody = {
-        title: question,
-        theme_id: 1,
-        answers: [
-          {
-            title: answer1,
-            score: points1,
-          },
-          {
-            title: answer2,
-            score: points2,
-          },
-          {
-            title: answer3,
-            score: points3,
-          },
-          {
-            title: answer4,
-            score: points4,
-          },
-          {
-            title: answer5,
-            score: +points5,
-          },
-        ],
-      }
-      const questionForm = await instance.post(
-        `${base_URL}/quiz.questions_add`,
-        formBody
-      )
-      console.log(questionForm.data)
-      handleReset()
-      notify()
-    } else if (setAddSixQtn) {
-      const formBody = {
-        title: question,
-        theme_id: 1,
-        answers: [
-          {
-            title: answer1,
-            score: points1,
-          },
-          {
-            title: answer2,
-            score: points2,
-          },
-          {
-            title: answer3,
-            score: points3,
-          },
-          {
-            title: answer4,
-            score: points4,
-          },
-          {
-            title: answer5,
-            score: +points5,
-          },
-          {
-            title: answer6,
-            score: +points6,
-          },
-        ],
-      }
-      const questionForm = await instance.post(
-        `${base_URL}/quiz.questions_add`,
-        formBody
-      )
-      console.log(questionForm.data)
-      handleReset()
-      notify()
-    } else if (addSevenQtn) {
-      const formBody = {
-        title: question,
-        theme_id: 1,
-        answers: [
-          {
-            title: answer1,
-            score: points1,
-          },
-          {
-            title: answer2,
-            score: points2,
-          },
-          {
-            title: answer3,
-            score: points3,
-          },
-          {
-            title: answer4,
-            score: points4,
-          },
-          {
-            title: answer5,
-            score: +points5,
-          },
-          {
-            title: answer6,
-            score: +points6,
-          },
-          {
-            title: answer7,
-            score: +points7,
-          },
-        ],
-      }
-      const questionForm = await instance.post(
-        `${base_URL}/quiz.questions_add`,
-        formBody
-      )
-      console.log(questionForm.data)
-      handleReset()
-      notify()
+  let formBody = {
+    title: question,
+    theme_id: 1,
+    answers: [
+      {
+        title: answer1,
+        score: points1,
+      },
+      {
+        title: answer2,
+        score: points2,
+      },
+      {
+        title: answer3,
+        score: points3,
+      },
+      {
+        title: answer4,
+        score: points4,
+      },
+      {
+        title: answer5,
+        score: +points5,
+      },
+    ],
+  }
+  if (addSevenQtn) {
+    formBody = {
+      title: question,
+      theme_id: 1,
+      answers: [
+        {
+          title: answer1,
+          score: points1,
+        },
+        {
+          title: answer2,
+          score: points2,
+        },
+        {
+          title: answer3,
+          score: points3,
+        },
+        {
+          title: answer4,
+          score: points4,
+        },
+        {
+          title: answer5,
+          score: +points5,
+        },
+        {
+          title: answer6,
+          score: +points6,
+        },
+        {
+          title: answer7,
+          score: +points7,
+        },
+      ],
     }
-*/
+  } else if (addSixQtn) {
+    formBody = {
+      title: question,
+      theme_id: 1,
+      answers: [
+        {
+          title: answer1,
+          score: points1,
+        },
+        {
+          title: answer2,
+          score: points2,
+        },
+        {
+          title: answer3,
+          score: points3,
+        },
+        {
+          title: answer4,
+          score: points4,
+        },
+        {
+          title: answer5,
+          score: +points5,
+        },
+        {
+          title: answer6,
+          score: +points6,
+        },
+      ],
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const instance = axios.create({
@@ -187,33 +163,8 @@ const AddQuestionPage = () => {
         'Content-Type': 'application/json',
       },
     })
+
     try {
-      const formBody = {
-        title: question,
-        theme_id: 1,
-        answers: [
-          {
-            title: answer1,
-            score: points1,
-          },
-          {
-            title: answer2,
-            score: points2,
-          },
-          {
-            title: answer3,
-            score: points3,
-          },
-          {
-            title: answer4,
-            score: points4,
-          },
-          {
-            title: answer5,
-            score: +points5,
-          },
-        ],
-      }
       const questionForm = await instance.post(
         `${base_URL}/quiz.questions_add`,
         formBody
@@ -222,14 +173,14 @@ const AddQuestionPage = () => {
       handleReset()
       notify()
     } catch (err) {
-      setError(err.message)
+      toast.error(err.message)
     }
   }
 
   return (
     <div className={styles.adminFormContainer}>
       <ToastContainer
-        position="top-right"
+        position="bottom-right"
         autoClose={3000}
       />
       <form
@@ -347,15 +298,15 @@ const AddQuestionPage = () => {
               <input
                 className={styles.ansverInput}
                 placeholder="Введите текст"
-                value={answer5}
-                onChange={(e) => setAnsver5(e.target.value)}
+                value={answer6}
+                onChange={(e) => setAnsver6(e.target.value)}
               />
               <input
                 type="text"
                 className={styles.pointInput}
                 placeholder="Баллы"
-                value={points5}
-                onChange={(e) => setPoints5(e.target.value)}
+                value={points6}
+                onChange={(e) => setPoints6(e.target.value)}
               />
             </div>
           </div>
@@ -367,15 +318,15 @@ const AddQuestionPage = () => {
               <input
                 className={styles.ansverInput}
                 placeholder="Введите текст"
-                value={answer5}
-                onChange={(e) => setAnsver5(e.target.value)}
+                value={answer7}
+                onChange={(e) => setAnsver7(e.target.value)}
               />
               <input
                 type="text"
                 className={styles.pointInput}
                 placeholder="Баллы"
-                value={points5}
-                onChange={(e) => setPoints5(e.target.value)}
+                value={points7}
+                onChange={(e) => setPoints7(e.target.value)}
               />
             </div>
           </div>
