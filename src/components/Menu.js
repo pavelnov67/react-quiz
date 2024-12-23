@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import styles from './adminPage.module.css'
+import styles from './UI/adminPage/adminPage.module.css'
 
 const Menu = () => {
   return (

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import styles from './adminPage.module.css'
-import { base_URL } from '../../authorization/Auth'
+import { base_URL } from '../../variables/vars'
 
 axios.defaults.withCredentials = true
 
@@ -156,8 +156,7 @@ const AddQuestionPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const instance = axios.create({
-      baseURL: base_URL,
-      timeout: 10000,
+      timeout: 5000,
       headers: {
         accept: 'application/json',
         'Content-Type': 'application/json',
