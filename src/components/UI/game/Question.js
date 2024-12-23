@@ -1,7 +1,26 @@
+import axios from 'axios'
 import styles from './question.module.css'
+import { base_URL } from '../../authorization/Auth'
 
-const Question = ({ questionsData }) => {
+const Question = ({ questionsData, reFetch }) => {
   const questions = questionsData
+
+  const handleDelete = async (id) => {
+    const instance = axios.create({
+      timeout: 5000,
+      headers: {
+        accept: 'application/json',
+      },
+    })
+    try {
+      await instance.delete(
+        `${base_URL}/quiz.questions_delete_by_id?question_id=${id}`
+      )
+      reFetch()
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <main className={styles.questions_container}>
@@ -28,6 +47,13 @@ const Question = ({ questionsData }) => {
               </div>
             ))}
           </div>
+          <button
+            type="button"
+            onClick={() => handleDelete(question.id)}
+            className={styles.delete_btn}
+          >
+            Удалить
+          </button>
         </div>
       ))}
     </main>
