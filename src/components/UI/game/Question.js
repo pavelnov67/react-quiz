@@ -1,9 +1,8 @@
-import { useEffect } from 'react'
 import axios from 'axios'
 import styles from './question.module.css'
 import { base_URL } from '../../authorization/Auth'
 
-const Question = ({ questionsData }) => {
+const Question = ({ questionsData, reFetch }) => {
   const questions = questionsData
 
   const handleDelete = async (id) => {
@@ -17,12 +16,11 @@ const Question = ({ questionsData }) => {
       await instance.delete(
         `${base_URL}/quiz.questions_delete_by_id?question_id=${id}`
       )
+      reFetch()
     } catch (err) {
       console.log(err)
     }
   }
-
-  useEffect(() => {}, [])
 
   return (
     <main className={styles.questions_container}>

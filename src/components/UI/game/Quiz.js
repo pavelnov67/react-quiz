@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import Question from './Question'
@@ -10,6 +10,7 @@ const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
 const Quiz = () => {
   const [isActive, setIsActive] = useState(false)
   const [questionsData, setQuestionsData] = useState({})
+  const [click, setClick] = useState(0)
 
   const handleClick = async () => {
     try {
@@ -19,6 +20,14 @@ const Quiz = () => {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  useEffect(() => {
+    handleClick()
+  }, [click])
+
+  const handleClickToFetch = () => {
+    setClick((prev) => prev + 1)
   }
 
   const handleClickThemes = () => {
@@ -40,7 +49,10 @@ const Quiz = () => {
           >
             Назад
           </button>
-          <Question questionsData={questionsData} />
+          <Question
+            reFetch={handleClickToFetch}
+            questionsData={questionsData}
+          />
         </div>
       ) : (
         <div className={styles.quiz_container}>

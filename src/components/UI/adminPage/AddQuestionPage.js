@@ -165,14 +165,11 @@ const AddQuestionPage = () => {
     })
 
     try {
-      const questionForm = await instance.post(
-        `${base_URL}/quiz.questions_add`,
-        formBody
-      )
-      console.log(questionForm.data)
+      await instance.post(`${base_URL}/quiz.questions_add`, formBody)
       handleReset()
       notify()
     } catch (err) {
+      setError(err.message)
       toast.error(err.message)
     }
   }
