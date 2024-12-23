@@ -20,6 +20,10 @@ const AddQuestionPage = () => {
   const [points4, setPoints4] = useState('')
   const [answer5, setAnsver5] = useState('')
   const [points5, setPoints5] = useState('')
+  const [answer6, setAnsver6] = useState('')
+  const [points6, setPoints6] = useState('')
+  const [answer7, setAnsver7] = useState('')
+  const [points7, setPoints7] = useState('')
   const [error, setError] = useState('')
   const [addSixQtn, setAddSixQtn] = useState(false)
   const [addSevenQtn, setAddSevenQtn] = useState(false)
@@ -38,6 +42,10 @@ const AddQuestionPage = () => {
     setPoints4('')
     setAnsver5('')
     setPoints5('')
+    setAnsver6('')
+    setPoints6('')
+    setAnsver7('')
+    setPoints7('')
     setAddSixQtn('')
     setAddSevenQtn('')
     setCount(0)
@@ -51,6 +59,124 @@ const AddQuestionPage = () => {
     }
   }
 
+  /*const formBody = 
+  try {
+    if (!setAddSixQtn) {
+      const formBody = {
+        title: question,
+        theme_id: 1,
+        answers: [
+          {
+            title: answer1,
+            score: points1,
+          },
+          {
+            title: answer2,
+            score: points2,
+          },
+          {
+            title: answer3,
+            score: points3,
+          },
+          {
+            title: answer4,
+            score: points4,
+          },
+          {
+            title: answer5,
+            score: +points5,
+          },
+        ],
+      }
+      const questionForm = await instance.post(
+        `${base_URL}/quiz.questions_add`,
+        formBody
+      )
+      console.log(questionForm.data)
+      handleReset()
+      notify()
+    } else if (setAddSixQtn) {
+      const formBody = {
+        title: question,
+        theme_id: 1,
+        answers: [
+          {
+            title: answer1,
+            score: points1,
+          },
+          {
+            title: answer2,
+            score: points2,
+          },
+          {
+            title: answer3,
+            score: points3,
+          },
+          {
+            title: answer4,
+            score: points4,
+          },
+          {
+            title: answer5,
+            score: +points5,
+          },
+          {
+            title: answer6,
+            score: +points6,
+          },
+        ],
+      }
+      const questionForm = await instance.post(
+        `${base_URL}/quiz.questions_add`,
+        formBody
+      )
+      console.log(questionForm.data)
+      handleReset()
+      notify()
+    } else if (addSevenQtn) {
+      const formBody = {
+        title: question,
+        theme_id: 1,
+        answers: [
+          {
+            title: answer1,
+            score: points1,
+          },
+          {
+            title: answer2,
+            score: points2,
+          },
+          {
+            title: answer3,
+            score: points3,
+          },
+          {
+            title: answer4,
+            score: points4,
+          },
+          {
+            title: answer5,
+            score: +points5,
+          },
+          {
+            title: answer6,
+            score: +points6,
+          },
+          {
+            title: answer7,
+            score: +points7,
+          },
+        ],
+      }
+      const questionForm = await instance.post(
+        `${base_URL}/quiz.questions_add`,
+        formBody
+      )
+      console.log(questionForm.data)
+      handleReset()
+      notify()
+    }
+*/
   const handleSubmit = async (e) => {
     e.preventDefault()
     const instance = axios.create({
@@ -88,7 +214,6 @@ const AddQuestionPage = () => {
           },
         ],
       }
-
       const questionForm = await instance.post(
         `${base_URL}/quiz.questions_add`,
         formBody
