@@ -8,8 +8,7 @@ const Question = ({ questionsData }) => {
 
   const handleDelete = async (id) => {
     const instance = axios.create({
-      baseURL: base_URL,
-      timeout: 2000,
+      timeout: 5000,
       headers: {
         accept: 'application/json',
       },
