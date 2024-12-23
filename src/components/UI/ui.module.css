@@ -37,3 +37,10 @@
   padding: 10px;
   border: none;
 }
+
+@media (max-width: 770px) {
+  .back_to_menu_btn {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
