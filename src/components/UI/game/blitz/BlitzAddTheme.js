@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import { base_URL } from '../../../variables/vars'
+import styles from '../../adminPage/adminPage.module.css'
 
 const BlitzAddTheme = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
@@ -28,25 +29,38 @@ const BlitzAddTheme = () => {
   })
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="title">Название темы</label>
-      <input
-        id="title"
-        name="title"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.title}
-      />
-      <label htmlFor="description">Описание темы</label>
-      <input
-        id="description"
-        name="description"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.description}
-      />
-      <button type="submit">Сохранить</button>
-    </form>
+    <div className={styles.adminFormContainer}>
+      <form
+        className={styles.adminForm}
+        onSubmit={formik.handleSubmit}
+      >
+        <h1>Форма добавления темы</h1>
+        <hr />
+        <div className={styles.inputContainer}>
+          <label htmlFor="title">Название темы</label>
+          <input
+            className={styles.blitz_input}
+            id="title"
+            name="title"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.title}
+          />
+          <label htmlFor="description">Описание темы</label>
+          <input
+            className={styles.blitz_input}
+            id="description"
+            name="description"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.description}
+          />
+        </div>
+        <div className={styles.buttonContainer}>
+          <button type="submit">Сохранить</button>
+        </div>
+      </form>
+    </div>
   )
 }
 
