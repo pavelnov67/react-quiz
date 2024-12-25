@@ -11,6 +11,7 @@ const Menu = () => {
       <div className={styles.side_container}>
         <div className={styles.sidebar}>
           <ul>
+            <h4>Меню игры 100/1</h4>
             <li>
               <Link to="add_question_page">
                 <button className={styles.anchor_btn}>
@@ -26,6 +27,13 @@ const Menu = () => {
             <li>
               <Link to="active_games">
                 <button className={styles.anchor_btn}>Активные игры</button>
+              </Link>
+            </li>
+            <br></br>
+            <h4>Меню игры блиц</h4>
+            <li>
+              <Link to="blitz">
+                <button className={styles.anchor_btn}>Список вопросов</button>
               </Link>
             </li>
           </ul>

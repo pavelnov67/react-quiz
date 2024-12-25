@@ -1,0 +1,17 @@
+{
+  "status": "ok",
+  "data": {
+    "themes": [
+      {
+        "id": 1,
+        "title": "Начальная тестовая тема",
+        "description": "Тематика вопросов создана вручную"
+      },
+      {
+        "id": 2,
+        "title": "Theme #1",
+        "description": "IT questions"
+      }
+    ]
+  }
+}
