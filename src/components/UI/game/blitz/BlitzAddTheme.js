@@ -1,12 +1,9 @@
-import { useState } from 'react'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../adminPage/adminPage.module.css'
 
 const BlitzAddTheme = () => {
-  // Pass the useFormik() hook initial form values and a submit function that will
-  // be called when the form is submitted
   const formik = useFormik({
     initialValues: {
       title: '',

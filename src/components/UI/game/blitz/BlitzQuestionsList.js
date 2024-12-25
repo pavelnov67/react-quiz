@@ -6,36 +6,47 @@ import styles from '../../ui.module.css'
 
 const BlitzQuestionsList = () => {
   const [themesData, setThemesData] = useState({})
+  const [isActive, setIsActive] = useState(false)
 
-  useEffect(() => {
-    const handleClick = async () => {
-      try {
-        const data = await axios.get(
-          `${base_URL}/game/blitz.themes_list`,
-          { withCredentials: true },
-          { crossDomain: true }
-        )
-        setThemesData(data.data.data.themes)
-        console.log(data.data.data)
-      } catch (e) {
-        console.log(e)
-      }
+  const handleClickThemes = async () => {
+    try {
+      const data = await axios.get(`${base_URL}/game/blitz.themes_list`)
+      setThemesData(data.data.data.themes)
+      setIsActive(!isActive)
+      console.log(themesData)
+    } catch (e) {
+      console.log(e)
     }
-    handleClick()
-  }, [])
-
-  console.log()
+  }
+  if (themesData) {
+    console.log(themesData)
+  }
 
   return (
     <div className={styles.blitz_container}>
-      <BlitzTheme />
+      <button
+        className={styles.start_quiz_btn}
+        type="button"
+        onClick={handleClickThemes}
+      >
+        Отобразить список вопросов
+      </button>
+      {isActive && <div>ХУЙ</div>}
     </div>
   )
 }
 
 export default BlitzQuestionsList
 
-/*{themesData.map((theme) => (
-        <BlitzTheme key={theme.id} {...theme} />
-      ))}
+/*
+      {!isActive && (
+        <div>
+          {themesData.map((theme) => (
+            <BlitzTheme
+              key={theme.id}
+              {...theme}
+            />
+          ))}
+        </div>
+      )}
         */
