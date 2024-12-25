@@ -36,6 +36,16 @@ const Menu = () => {
                 <button className={styles.anchor_btn}>Список вопросов</button>
               </Link>
             </li>
+            <li>
+              <Link to="blitz_add_theme">
+                <button className={styles.anchor_btn}>Добавить тему</button>
+              </Link>
+            </li>
+            <li>
+              <Link to="blitz_add_question">
+                <button className={styles.anchor_btn}>Добавить вопрос</button>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className={styles.content}>

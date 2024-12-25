@@ -16,7 +16,7 @@ const BlitzQuestionsList = () => {
           { crossDomain: true }
         )
         setThemesData(data.data.data.themes)
-        console.log(data.data.data.themes)
+        console.log(data.data.data)
       } catch (e) {
         console.log(e)
       }
