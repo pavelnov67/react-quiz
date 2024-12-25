@@ -4,8 +4,10 @@ import { base_URL } from '../../../variables/vars'
 import BlitzQuestion from './BlitzQuestion'
 import styles from '../../ui.module.css'
 
-const BlitzTheme = (id, description, title) => {
+const BlitzTheme = ({ id, description, title }) => {
   console.log(id)
+  console.log(description)
+  console.log(title)
   const [questionsData, setQuestionsData] = useState({})
 
   useEffect(() => {

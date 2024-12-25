@@ -6,14 +6,11 @@ import styles from '../../ui.module.css'
 
 const BlitzQuestionsList = () => {
   const [themesData, setThemesData] = useState([])
-  const [isActive, setIsActive] = useState(false)
 
   const handleClickThemes = async () => {
     try {
       const data = await axios.get(`${base_URL}/game/blitz.themes_list`)
       setThemesData(data.data.data.themes)
-      setIsActive(!isActive)
-      console.log(themesData)
     } catch (e) {
       console.log(e)
     }
@@ -31,16 +28,14 @@ const BlitzQuestionsList = () => {
       >
         Отобразить список вопросов
       </button>
-      {!isActive && (
-        <div>
-          {themesData.map((theme) => (
-            <BlitzTheme
-              key={theme.id}
-              {...theme}
-            />
-          ))}
-        </div>
-      )}
+      <div>
+        {themesData.map((theme) => (
+          <BlitzTheme
+            key={theme.id}
+            {...theme}
+          />
+        ))}
+      </div>
     </div>
   )
 }
