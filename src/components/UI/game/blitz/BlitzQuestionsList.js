@@ -5,7 +5,7 @@ import BlitzTheme from './BlitzTheme'
 import styles from '../../ui.module.css'
 
 const BlitzQuestionsList = () => {
-  const [themesData, setThemesData] = useState({})
+  const [themesData, setThemesData] = useState([])
   const [isActive, setIsActive] = useState(false)
 
   const handleClickThemes = async () => {
@@ -31,14 +31,6 @@ const BlitzQuestionsList = () => {
       >
         Отобразить список вопросов
       </button>
-      {isActive && <div>ХУЙ</div>}
-    </div>
-  )
-}
-
-export default BlitzQuestionsList
-
-/*
       {!isActive && (
         <div>
           {themesData.map((theme) => (
@@ -49,4 +41,8 @@ export default BlitzQuestionsList
           ))}
         </div>
       )}
-        */
+    </div>
+  )
+}
+
+export default BlitzQuestionsList
