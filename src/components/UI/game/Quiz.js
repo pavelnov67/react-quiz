@@ -5,7 +5,7 @@ import Question from './Question'
 import styles from '../ui.module.css'
 import { base_URL } from '../../variables/vars'
 
-const url_APIGet = `${base_URL}/quiz.questions_list?theme_id=1`
+const url_APIGet = `${base_URL}/game/quiz.questions_list?theme_id=1`
 
 const Quiz = () => {
   const [isActive, setIsActive] = useState(false)
@@ -56,10 +56,7 @@ const Quiz = () => {
         </div>
       ) : (
         <div className={styles.quiz_container}>
-          <ToastContainer
-            position="bottom-right"
-            autoClose={3000}
-          />
+          <ToastContainer position="bottom-right" autoClose={3000} />
           <button
             className={styles.start_quiz_btn}
             type="button"

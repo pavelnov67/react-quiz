@@ -164,7 +164,7 @@ const AddQuestionPage = () => {
     })
 
     try {
-      await instance.post(`${base_URL}/quiz.questions_add`, formBody)
+      await instance.post(`${base_URL}/game/quiz.questions_add`, formBody)
       handleReset()
       notify()
     } catch (err) {
@@ -175,14 +175,8 @@ const AddQuestionPage = () => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-      />
-      <form
-        className={styles.adminForm}
-        onSubmit={handleSubmit}
-      >
+      <ToastContainer position="bottom-right" autoClose={3000} />
+      <form className={styles.adminForm} onSubmit={handleSubmit}>
         <h1>Форма добавления вопроса</h1>
         <hr />
         <div className={styles.inputContainer}>
@@ -329,10 +323,7 @@ const AddQuestionPage = () => {
         )}
         {setAddSevenQtn && (
           <div className={styles.addAnswerBtn}>
-            <button
-              type="button"
-              onClick={handleAddQtn}
-            >
+            <button type="button" onClick={handleAddQtn}>
               +
             </button>
           </div>
@@ -340,10 +331,7 @@ const AddQuestionPage = () => {
         <p className={styles.error_message}>{error}</p>
         <div className={styles.buttonContainer}>
           <button type="submit">Сохранить</button>
-          <button
-            type="button"
-            onClick={handleReset}
-          >
+          <button type="button" onClick={handleReset}>
             Сбросить всё
           </button>
         </div>

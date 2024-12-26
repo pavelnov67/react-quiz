@@ -14,7 +14,7 @@ const Question = ({ questionsData, reFetch }) => {
     })
     try {
       await instance.delete(
-        `${base_URL}/quiz.questions_delete_by_id?question_id=${id}`
+        `${base_URL}/game/quiz.questions_delete_by_id?question_id=${id}`
       )
       reFetch()
     } catch (err) {
@@ -25,10 +25,7 @@ const Question = ({ questionsData, reFetch }) => {
   return (
     <main className={styles.questions_container}>
       {questions.map((question) => (
-        <div
-          key={question.id}
-          className={styles.question_container}
-        >
+        <div key={question.id} className={styles.question_container}>
           <h2>Вопрос №{question.id}</h2>
           <h3>{question.title}</h3>
           <hr></hr>
@@ -38,10 +35,7 @@ const Question = ({ questionsData, reFetch }) => {
           </div>
           <div className={styles.answer_container}>
             {question.answers.map((answer) => (
-              <div
-                className={styles.answers}
-                key={answer.id}
-              >
+              <div className={styles.answers} key={answer.id}>
                 <h3>{answer.title}</h3>
                 <h3>{answer.score}</h3>
               </div>
