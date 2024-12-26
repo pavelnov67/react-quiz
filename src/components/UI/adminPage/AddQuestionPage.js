@@ -10,19 +10,19 @@ axios.defaults.withCredentials = true
 
 const AddQuestionPage = () => {
   const [question, setQuestion] = useState('')
-  const [answer1, setAnsver1] = useState('')
+  const [answer1, setAnswer1] = useState('')
   const [points1, setPoints1] = useState('')
-  const [answer2, setAnsver2] = useState('')
+  const [answer2, setAnswer2] = useState('')
   const [points2, setPoints2] = useState('')
-  const [answer3, setAnsver3] = useState('')
+  const [answer3, setAnswer3] = useState('')
   const [points3, setPoints3] = useState('')
-  const [answer4, setAnsver4] = useState('')
+  const [answer4, setAnswer4] = useState('')
   const [points4, setPoints4] = useState('')
-  const [answer5, setAnsver5] = useState('')
+  const [answer5, setAnswer5] = useState('')
   const [points5, setPoints5] = useState('')
-  const [answer6, setAnsver6] = useState('')
+  const [answer6, setAnswer6] = useState('')
   const [points6, setPoints6] = useState('')
-  const [answer7, setAnsver7] = useState('')
+  const [answer7, setAnswer7] = useState('')
   const [points7, setPoints7] = useState('')
   const [error, setError] = useState('')
   const [addSixQtn, setAddSixQtn] = useState(false)
@@ -32,19 +32,19 @@ const AddQuestionPage = () => {
 
   const handleReset = () => {
     setQuestion('')
-    setAnsver1('')
+    setAnswer1('')
     setPoints1('')
-    setAnsver2('')
+    setAnswer2('')
     setPoints2('')
-    setAnsver3('')
+    setAnswer3('')
     setPoints3('')
-    setAnsver4('')
+    setAnswer4('')
     setPoints4('')
-    setAnsver5('')
+    setAnswer5('')
     setPoints5('')
-    setAnsver6('')
+    setAnswer6('')
     setPoints6('')
-    setAnsver7('')
+    setAnswer7('')
     setPoints7('')
     setAddSixQtn('')
     setAddSevenQtn('')
@@ -175,7 +175,7 @@ const AddQuestionPage = () => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer position="bottom-right" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <form className={styles.adminForm} onSubmit={handleSubmit}>
         <h1>Форма добавления вопроса</h1>
         <hr />
@@ -198,7 +198,7 @@ const AddQuestionPage = () => {
               className={styles.ansverInput}
               placeholder="Введите текст"
               value={answer1}
-              onChange={(e) => setAnsver1(e.target.value)}
+              onChange={(e) => setAnswer1(e.target.value)}
             />
             <input
               type="text"
@@ -216,7 +216,7 @@ const AddQuestionPage = () => {
               className={styles.ansverInput}
               placeholder="Введите текст"
               value={answer2}
-              onChange={(e) => setAnsver2(e.target.value)}
+              onChange={(e) => setAnswer2(e.target.value)}
             />
             <input
               type="text"
@@ -234,7 +234,7 @@ const AddQuestionPage = () => {
               className={styles.ansverInput}
               placeholder="Введите текст"
               value={answer3}
-              onChange={(e) => setAnsver3(e.target.value)}
+              onChange={(e) => setAnswer3(e.target.value)}
             />
             <input
               type="text"
@@ -252,7 +252,7 @@ const AddQuestionPage = () => {
               className={styles.ansverInput}
               placeholder="Введите текст"
               value={answer4}
-              onChange={(e) => setAnsver4(e.target.value)}
+              onChange={(e) => setAnswer4(e.target.value)}
             />
             <input
               type="text"
@@ -270,7 +270,7 @@ const AddQuestionPage = () => {
               className={styles.ansverInput}
               placeholder="Введите текст"
               value={answer5}
-              onChange={(e) => setAnsver5(e.target.value)}
+              onChange={(e) => setAnswer5(e.target.value)}
             />
             <input
               type="text"
@@ -289,7 +289,7 @@ const AddQuestionPage = () => {
                 className={styles.ansverInput}
                 placeholder="Введите текст"
                 value={answer6}
-                onChange={(e) => setAnsver6(e.target.value)}
+                onChange={(e) => setAnswer6(e.target.value)}
               />
               <input
                 type="text"
@@ -309,7 +309,7 @@ const AddQuestionPage = () => {
                 className={styles.ansverInput}
                 placeholder="Введите текст"
                 value={answer7}
-                onChange={(e) => setAnsver7(e.target.value)}
+                onChange={(e) => setAnswer7(e.target.value)}
               />
               <input
                 type="text"

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
-import Question from './Question'
+import QuestionList from './QuestionList'
 import styles from '../ui.module.css'
 import { base_URL } from '../../variables/vars'
 
@@ -14,7 +14,11 @@ const Quiz = () => {
 
   const handleClick = async () => {
     try {
-      const data = await axios.get(url_APIGet)
+      const data = await axios.get(
+        url_APIGet,
+        { withCredentials: true },
+        { crossDomain: true }
+      )
       setQuestionsData(data.data.data.questions)
       setIsActive(true)
     } catch (e) {
@@ -49,7 +53,7 @@ const Quiz = () => {
           >
             Назад
           </button>
-          <Question
+          <QuestionList
             reFetch={handleClickToFetch}
             questionsData={questionsData}
           />

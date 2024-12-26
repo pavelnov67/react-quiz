@@ -1,4 +1,3 @@
-import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -29,9 +28,8 @@ const Auth = () => {
         email,
         password,
       }
-      const user = await instance.post(url_APIPost, loginBody)
-      setEmail(user)
-      navigate('main_layout')
+      await instance.post(url_APIPost, loginBody)
+      navigate('/')
     } catch (err) {
       setError(err.message)
     }
@@ -39,10 +37,7 @@ const Auth = () => {
 
   return (
     <div className={styles.authFormContainer}>
-      <form
-        className={styles.authForm}
-        onSubmit={handleSubmit}
-      >
+      <form className={styles.authForm} onSubmit={handleSubmit}>
         <h1>Авторизация</h1>
         <div className={styles.form_inputs}>
           <label>Email</label>

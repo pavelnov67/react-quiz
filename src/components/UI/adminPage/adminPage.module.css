@@ -250,8 +250,6 @@ header {
 }
 
 @media (max-width: 770px) {
-  .buttonContainer {
-  }
   .buttonContainer button {
     font-size: 15px;
     padding: 5px;
@@ -260,4 +258,11 @@ header {
     font-size: 10px;
     padding: 5px;
   }
+}
+
+.blitz_input {
+  box-sizing: border-box;
+  font-size: 15px;
+  padding: 5px;
+  border-radius: 3px;
 }

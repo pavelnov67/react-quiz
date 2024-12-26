@@ -1,45 +1,33 @@
-import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Auth from './components/authorization/Auth'
 import MainLayout from './components/MainLayout'
-import Quiz from './components/UI/game/Quiz'
+import QuizMenu from './components/UI/game/QuizMenu'
 import AddQuestionPage from './components/UI/adminPage/AddQuestionPage'
 import ActiveGames from './components/UI/adminPage/ActiveGames'
+import BlitzQuestionsList from './components/UI/game/blitz/BlitzQuestionsList'
+import BlitzAddTheme from './components/UI/game/blitz/BlitzAddTheme'
+import BlitzAddQuestion from './components/UI/game/blitz/BlitzAddQuestion'
+
 import NotFound from './components/NotFound'
 import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route
-            path="/"
-            element={<Auth />}
-          />
-          <Route
-            path="main_layout"
-            element={<MainLayout />}
-          >
-            <Route
-              path="quiz"
-              element={<Quiz />}
-            />
-            <Route
-              path="active_games"
-              element={<ActiveGames />}
-            />
-            <Route
-              path="add_question_page"
-              element={<AddQuestionPage />}
-            />
-            <Route
-              path="*"
-              element={<NotFound />}
-            />
-          </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/" element={<MainLayout />}>
+          <Route path="quiz" element={<QuizMenu />} />
+          <Route path="active_games" element={<ActiveGames />} />
+          <Route path="add_question_page" element={<AddQuestionPage />} />
+          <Route path="blitz" element={<BlitzQuestionsList />} />
+          <Route path="blitz_add_theme" element={<BlitzAddTheme />} />
+          <Route path="blitz_add_question" element={<BlitzAddQuestion />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
   )
 }
 

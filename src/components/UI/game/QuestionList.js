@@ -2,6 +2,8 @@ import axios from 'axios'
 import styles from './question.module.css'
 import { base_URL } from '../../variables/vars'
 
+axios.defaults.withCredentials = true
+
 const Question = ({ questionsData, reFetch }) => {
   const questions = questionsData
 

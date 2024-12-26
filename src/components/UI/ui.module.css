@@ -44,3 +44,23 @@
     padding: 6px;
   }
 }
+
+.blitz_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px;
+}
+.blitz_theme_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px grey;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.blitz_theme_container h2 {
+  font-size: 18px;
+}
