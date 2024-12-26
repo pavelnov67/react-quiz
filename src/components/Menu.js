@@ -20,12 +20,12 @@ const Menu = () => {
       try {
         const userData = await axios.get(`${base_URL}/admin.current`)
         setUserName(userData.data.data.email)
-        setIsLogged(!isLogged)
       } catch (err) {
         console.log(err)
       }
     }
     fetchCurrentUser()
+    setIsLogged(true)
   }, [])
 
   const handleLogin = () => {
