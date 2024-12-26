@@ -9,7 +9,7 @@ const BlitzAddTheme = () => {
       title: '',
       description: '',
     },
-    onSubmit: (values) => {
+    onSubmit: async (values, { resetForm, setStatus }) => {
       const instance = axios.create({
         timeout: 5000,
         headers: {
@@ -18,8 +18,11 @@ const BlitzAddTheme = () => {
         },
       })
       try {
-        instance.post(`${base_URL}/game/blitz.themes_add`, values)
+        await instance.post(`${base_URL}/game/blitz.themes_add`, values)
+        resetForm({})
+        setStatus({ success: true })
       } catch (err) {
+        setStatus({ success: false })
         console.log(err.message)
       }
     },
@@ -27,10 +30,7 @@ const BlitzAddTheme = () => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <form
-        className={styles.adminForm}
-        onSubmit={formik.handleSubmit}
-      >
+      <form className={styles.adminForm} onSubmit={formik.handleSubmit}>
         <h1>Форма добавления темы</h1>
         <hr />
         <div className={styles.inputContainer}>
