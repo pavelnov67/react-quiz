@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
 import { base_URL } from '../../../variables/vars'
 import BlitzTheme from './BlitzTheme'
 import styles from '../../ui.module.css'
@@ -11,8 +12,9 @@ const BlitzQuestionsList = () => {
     try {
       const data = await axios.get(`${base_URL}/game/blitz.themes_list`)
       setThemesData(data.data.data.themes)
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      console.log(err)
+      toast.error(err.message)
     }
   }
   if (themesData) {
@@ -21,6 +23,7 @@ const BlitzQuestionsList = () => {
 
   return (
     <div className={styles.blitz_container}>
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <button
         className={styles.start_quiz_btn}
         type="button"
@@ -30,10 +33,7 @@ const BlitzQuestionsList = () => {
       </button>
       <div>
         {themesData.map((theme) => (
-          <BlitzTheme
-            key={theme.id}
-            {...theme}
-          />
+          <BlitzTheme key={theme.id} {...theme} />
         ))}
       </div>
     </div>

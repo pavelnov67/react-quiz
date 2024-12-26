@@ -23,6 +23,7 @@ const BlitzAddQuestion = () => {
         await instance.post(`${base_URL}/game/blitz.questions_add`, values)
         resetForm({})
         setStatus({ success: true })
+        toast.info('Тема добавлена успешно!')
       } catch (err) {
         setStatus({ success: false })
         toast.error(err.message)

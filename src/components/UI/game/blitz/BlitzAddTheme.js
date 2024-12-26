@@ -22,6 +22,7 @@ const BlitzAddTheme = () => {
         await instance.post(`${base_URL}/game/blitz.themes_add`, values)
         resetForm({})
         setStatus({ success: true })
+        toast.info('Тема добавлена успешно!')
       } catch (err) {
         setStatus({ success: false })
         console.log(err.message)

@@ -1,12 +1,20 @@
 import { Outlet } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from './UI/adminPage/adminPage.module.css'
 
 const Menu = () => {
+  const navigate = useNavigate()
+  const handleAuth = () => {
+    navigate('/auth')
+  }
   return (
     <div className={styles.menu_container}>
       <header>
         <h2>Страница администратора</h2>
+        <button className={styles.login_btn} type="button" onClick={handleAuth}>
+          Войти
+        </button>
       </header>
       <div className={styles.side_container}>
         <div className={styles.sidebar}>

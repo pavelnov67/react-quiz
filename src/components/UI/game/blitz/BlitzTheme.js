@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { base_URL } from '../../../variables/vars'
-import BlitzQuestion from './BlitzQuestion'
-import styles from '../../ui.module.css'
 
 const BlitzTheme = ({ id, description, title }) => {
   console.log(id)
