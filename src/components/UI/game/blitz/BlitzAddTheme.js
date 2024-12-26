@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
+import { ToastContainer, toast } from 'react-toastify'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../adminPage/adminPage.module.css'
 
@@ -24,12 +25,14 @@ const BlitzAddTheme = () => {
       } catch (err) {
         setStatus({ success: false })
         console.log(err.message)
+        toast.error(err.message)
       }
     },
   })
 
   return (
     <div className={styles.adminFormContainer}>
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <form className={styles.adminForm} onSubmit={formik.handleSubmit}>
         <h1>Форма добавления темы</h1>
         <hr />
