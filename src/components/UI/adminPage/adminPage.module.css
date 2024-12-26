@@ -59,10 +59,6 @@ header {
   background-color: #f1f1f115;
 }
 
-.sidebar a {
-  width: 100%;
-}
-
 @media (max-width: 770px) {
   .side_container {
     grid-template-columns: 0.23fr 0.8fr;
@@ -97,7 +93,7 @@ header {
 }
 
 .anchor_btn:hover {
-  background-color: #f1f1f115;
+  background-color: #ffffff00;
 }
 
 @media (max-width: 770px) {
