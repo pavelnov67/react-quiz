@@ -1,9 +1,6 @@
-import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { login } from '../redux/slices/auth'
 import styles from './auth.module.css'
 import { base_URL } from '../variables/vars'
 
@@ -15,7 +12,6 @@ const Auth = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -32,9 +28,8 @@ const Auth = () => {
         email,
         password,
       }
-      const user = await instance.post(url_APIPost, loginBody)
-      await dispatch(login(user.data))
-      navigate('main_layout')
+      await instance.post(url_APIPost, loginBody)
+      navigate('/')
     } catch (err) {
       setError(err.message)
     }
