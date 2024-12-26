@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
+import { ToastContainer, toast } from 'react-toastify'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../adminPage/adminPage.module.css'
 
@@ -24,6 +25,7 @@ const BlitzAddQuestion = () => {
         setStatus({ success: true })
       } catch (err) {
         setStatus({ success: false })
+        toast.error(err.message)
         console.log(err.message)
       }
     },
@@ -31,6 +33,7 @@ const BlitzAddQuestion = () => {
 
   return (
     <div className={styles.adminFormContainer}>
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <form className={styles.adminForm} onSubmit={formik.handleSubmit}>
         <h1>Форма добавления вопроса</h1>
         <hr />

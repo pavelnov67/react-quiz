@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
 import styles from './question.module.css'
 import { base_URL } from '../../variables/vars'
 
@@ -21,11 +22,13 @@ const Question = ({ questionsData, reFetch }) => {
       reFetch()
     } catch (err) {
       console.log(err)
+      toast.error(err.message)
     }
   }
 
   return (
     <main className={styles.questions_container}>
+      <ToastContainer position="bottom-right" autoClose={2000} />
       {questions.map((question) => (
         <div key={question.id} className={styles.question_container}>
           <h2>Вопрос №{question.id}</h2>

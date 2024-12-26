@@ -21,8 +21,9 @@ const Quiz = () => {
       )
       setQuestionsData(data.data.data.questions)
       setIsActive(true)
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      console.log(err)
+      toast.error(err.message)
     }
   }
 
@@ -44,6 +45,7 @@ const Quiz = () => {
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={2000} />
       {isActive ? (
         <div>
           <button
