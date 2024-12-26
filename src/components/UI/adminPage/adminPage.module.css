@@ -45,6 +45,10 @@ header {
   width: 52%;
 }
 
+.sidebar h3 {
+  color: rgba(255, 255, 255, 0.411);
+}
+
 .sidebar ul {
   display: flex;
   flex-direction: column;
