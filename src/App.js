@@ -1,4 +1,6 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import PrivateRoute from './components/router/PrivateRoute'
+import RootComponent from './components/RootComponent'
 import Auth from './components/authorization/Auth'
 import MainLayout from './components/MainLayout'
 import QuizMenu from './components/UI/game/QuizMenu'
@@ -12,10 +14,11 @@ import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Auth />} />
+    <div className="App">
+      <Routes>
+        <Route path="*" element={<h1>Not found</h1>} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/" element={<MainLayout />} />
           <Route path="main_layout" element={<MainLayout />}>
             <Route path="quiz" element={<QuizMenu />} />
             <Route path="active_games" element={<ActiveGames />} />
@@ -25,9 +28,10 @@ function App() {
             <Route path="blitz_add_question" element={<BlitzAddQuestion />} />
             <Route path="*" element={<NotFound />} />
           </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+        </Route>
+        <Route path="auth" element={<RootComponent />} />
+      </Routes>
+    </div>
   )
 }
 
