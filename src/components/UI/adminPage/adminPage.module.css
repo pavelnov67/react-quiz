@@ -5,12 +5,33 @@
 }
 
 header {
-  height: 6vh;
   background-color: #f1f1f110;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 25px;
   margin-bottom: 15px;
+}
+
+.admin_icon_menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.login_btn {
+  max-width: 250px;
+  font-size: 15px;
+  background-color: #94bd02e5;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  margin: 10px;
+  border: none;
 }
 
 .side_container {
@@ -49,6 +70,19 @@ header {
   .sidebar {
     width: 90%;
   }
+}
+
+.anchor_btn_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+}
+
+.side_icon svg {
+  color: #fff;
+  width: 30px;
+  height: 30px;
 }
 
 .anchor_btn {
