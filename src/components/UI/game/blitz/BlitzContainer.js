@@ -7,7 +7,7 @@ import styles from '../../adminPage/adminPage.module.css'
 
 const BlitzContainer = () => {
   const [numbersArr, setNumbersArr] = useState([])
-  const [selectedOption, setSelectedOption] = useState(null)
+  const [selectedOption, setSelectedOption] = useState([])
   useEffect(() => {
     const fetchThemeNumbers = async () => {
       try {
@@ -19,11 +19,6 @@ const BlitzContainer = () => {
     }
     fetchThemeNumbers()
   }, [])
-
-  const newNumbersArr = numbersArr.map((data) => ({
-    value: data.title,
-    label: data.title,
-  }))
 
   const div = () => {
     return (
@@ -37,12 +32,28 @@ const BlitzContainer = () => {
     )
   }
 
+  const newNumbersArr = numbersArr.map((data) => ({
+    value: data.title,
+    label: data.title,
+  }))
+
+  const id = numbersArr.map((theme) => {
+    if (selectedOption.value === theme.title) {
+      return theme.id
+    }
+  })
+
+  const themeNumber = id.find((i) => {
+    if (i) return i
+  })
+
+  console.log(themeNumber)
+
   return (
     <div>
       <BlitzAddQuestion
-        numbers={numbersArr}
+        themeNumber={themeNumber}
         div={div}
-        selectedOption={selectedOption}
       />
     </div>
   )

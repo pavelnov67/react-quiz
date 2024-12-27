@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../adminPage/adminPage.module.css'
 
-const BlitzAddQuestion = ({ selectedOption, div }) => {
+const BlitzAddQuestion = ({ div, themeNumber }) => {
   const [title, setTitle] = useState('')
   const [answer, setAnswer] = useState('')
 
@@ -21,7 +21,7 @@ const BlitzAddQuestion = ({ selectedOption, div }) => {
       const body = {
         title,
         answer,
-        theme_id: 1,
+        theme_id: themeNumber,
       }
       await instance.post(`${base_URL}/game/blitz.questions_add`, body)
       toast.info('Тема добавлена успешно!')
@@ -32,8 +32,14 @@ const BlitzAddQuestion = ({ selectedOption, div }) => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer position="bottom-right" autoClose={2000} />
-      <form className={styles.adminForm} onSubmit={handlePostQuestion}>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
+      <form
+        className={styles.adminForm}
+        onSubmit={handlePostQuestion}
+      >
         <h1>Форма добавления вопроса</h1>
         <hr />
         {div()}
