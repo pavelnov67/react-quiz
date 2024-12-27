@@ -13,7 +13,6 @@ import styles from './UI/adminPage/adminPage.module.css'
 const Menu = () => {
   const navigate = useNavigate()
   const [userName, setUserName] = useState('')
-  const [isLogged, setIsLogged] = useState(false)
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
@@ -25,7 +24,6 @@ const Menu = () => {
       }
     }
     fetchCurrentUser()
-    setIsLogged(true)
   }, [])
 
   const handleLogin = () => {
@@ -35,31 +33,30 @@ const Menu = () => {
   return (
     <div className={styles.menu_container}>
       <header>
-        <h2>Страница администратора</h2>
-        {isLogged ? (
-          <div className={styles.admin_icon_menu}>
-            <RiAdminLine />
-            <h4>{userName}</h4>
-          </div>
-        ) : (
-          <button
-            className={styles.login_btn}
-            type="button"
-            onClick={handleLogin}
-          >
-            Войти
-          </button>
-        )}
+        <div className={styles.header_main_container}>
+          <h2>Страница администратора</h2>
+          {userName ? (
+            <div className={styles.admin_icon_menu}>
+              <RiAdminLine />
+              <h4>{userName}</h4>
+            </div>
+          ) : (
+            <button
+              className={styles.login_btn}
+              type="button"
+              onClick={handleLogin}
+            >
+              Войти
+            </button>
+          )}
+        </div>
       </header>
       <div className={styles.side_container}>
         <div className={styles.sidebar}>
           <ul>
             <h3>Меню игры 100/1</h3>
             <li>
-              <Link
-                to="quiz"
-                className={styles.anchor_btn_container}
-              >
+              <Link to="quiz" className={styles.anchor_btn_container}>
                 <div className={styles.side_icon}>
                   <CiViewList />
                 </div>
@@ -80,10 +77,7 @@ const Menu = () => {
               </Link>
             </li>
             <li>
-              <Link
-                to="active_games"
-                className={styles.anchor_btn_container}
-              >
+              <Link to="active_games" className={styles.anchor_btn_container}>
                 <div className={styles.side_icon}>
                   <SlGameController />
                 </div>
@@ -93,10 +87,7 @@ const Menu = () => {
             <br></br>
             <h3>Меню игры блиц</h3>
             <li>
-              <Link
-                to="blitz"
-                className={styles.anchor_btn_container}
-              >
+              <Link to="blitz" className={styles.anchor_btn_container}>
                 <div className={styles.side_icon}>
                   <CiViewList />
                 </div>

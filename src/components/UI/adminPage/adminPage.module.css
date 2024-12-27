@@ -13,6 +13,12 @@ header {
   margin-bottom: 15px;
 }
 
+.header_main_container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
 .admin_icon_menu {
   display: flex;
   flex-direction: row;
@@ -20,6 +26,10 @@ header {
   gap: 5px;
   padding: 10px;
   margin: 10px;
+}
+
+.admin_icon_menu h4 {
+  font-weight: 400;
 }
 
 .login_btn {
