@@ -34,7 +34,8 @@ header {
   font-weight: 400;
 }
 
-.login_btn {
+.login_btn,
+.logOut_btn {
   max-width: 250px;
   font-size: 15px;
   background-color: #94bd02e5;
@@ -44,6 +45,10 @@ header {
   padding: 5px;
   margin: 10px;
   border: none;
+}
+
+.logOut_btn {
+  background-color: #f36f6fe5;
 }
 
 .side_container {

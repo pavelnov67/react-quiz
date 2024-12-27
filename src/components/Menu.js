@@ -30,6 +30,24 @@ const Menu = () => {
     navigate('/auth')
   }
 
+  const handleLogOut = async (e) => {
+    e.preventDefault()
+    const instance = axios.create({
+      baseURL: base_URL,
+      timeout: 10000,
+      headers: {
+        accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    try {
+      await instance.post(`${base_URL}/admin.logout`)
+      navigate('/auth')
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
   return (
     <div className={styles.menu_container}>
       <header>
@@ -39,6 +57,13 @@ const Menu = () => {
             <div className={styles.admin_icon_menu}>
               <RiAdminLine />
               <h4>{userName}</h4>
+              <button
+                className={styles.logOut_btn}
+                type="button"
+                onClick={handleLogOut}
+              >
+                Выход
+              </button>
             </div>
           ) : (
             <div className={styles.header_main_container}>
