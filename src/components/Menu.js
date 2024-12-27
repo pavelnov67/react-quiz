@@ -41,13 +41,16 @@ const Menu = () => {
               <h4>{userName}</h4>
             </div>
           ) : (
-            <button
-              className={styles.login_btn}
-              type="button"
-              onClick={handleLogin}
-            >
-              Войти
-            </button>
+            <div className={styles.header_main_container}>
+              <p>Требуется авторизация</p>
+              <button
+                className={styles.login_btn}
+                type="button"
+                onClick={handleLogin}
+              >
+                Войти
+              </button>
+            </div>
           )}
         </div>
       </header>
