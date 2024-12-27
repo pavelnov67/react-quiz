@@ -175,14 +175,8 @@ const AddQuestionPage = () => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-      />
-      <form
-        className={styles.adminForm}
-        onSubmit={handleSubmit}
-      >
+      <ToastContainer position="bottom-right" autoClose={2000} />
+      <form className={styles.adminForm} onSubmit={handleSubmit}>
         <h1>Форма добавления вопроса</h1>
         <hr />
         <div className={styles.inputContainer}>
@@ -207,7 +201,7 @@ const AddQuestionPage = () => {
               onChange={(e) => setAnswer1(e.target.value)}
             />
             <input
-              type="text"
+              type="number"
               className={styles.pointInput}
               placeholder="Баллы"
               value={points1}
@@ -225,7 +219,7 @@ const AddQuestionPage = () => {
               onChange={(e) => setAnswer2(e.target.value)}
             />
             <input
-              type="text"
+              type="number"
               className={styles.pointInput}
               placeholder="Баллы"
               value={points2}
@@ -243,7 +237,7 @@ const AddQuestionPage = () => {
               onChange={(e) => setAnswer3(e.target.value)}
             />
             <input
-              type="text"
+              type="number"
               className={styles.pointInput}
               placeholder="Баллы"
               value={points3}
@@ -261,7 +255,7 @@ const AddQuestionPage = () => {
               onChange={(e) => setAnswer4(e.target.value)}
             />
             <input
-              type="text"
+              type="number"
               className={styles.pointInput}
               placeholder="Баллы"
               value={points4}
@@ -279,7 +273,7 @@ const AddQuestionPage = () => {
               onChange={(e) => setAnswer5(e.target.value)}
             />
             <input
-              type="text"
+              type="number"
               className={styles.pointInput}
               placeholder="Баллы"
               value={points5}
@@ -298,7 +292,7 @@ const AddQuestionPage = () => {
                 onChange={(e) => setAnswer6(e.target.value)}
               />
               <input
-                type="text"
+                type="number"
                 className={styles.pointInput}
                 placeholder="Баллы"
                 value={points6}
@@ -318,7 +312,7 @@ const AddQuestionPage = () => {
                 onChange={(e) => setAnswer7(e.target.value)}
               />
               <input
-                type="text"
+                type="number"
                 className={styles.pointInput}
                 placeholder="Баллы"
                 value={points7}
@@ -329,10 +323,7 @@ const AddQuestionPage = () => {
         )}
         {setAddSevenQtn && (
           <div className={styles.addAnswerBtn}>
-            <button
-              type="button"
-              onClick={handleAddQtn}
-            >
+            <button type="button" onClick={handleAddQtn}>
               +
             </button>
           </div>
@@ -340,10 +331,7 @@ const AddQuestionPage = () => {
         <p className={styles.error_message}>{error}</p>
         <div className={styles.buttonContainer}>
           <button type="submit">Сохранить</button>
-          <button
-            type="button"
-            onClick={handleReset}
-          >
+          <button type="button" onClick={handleReset}>
             Сбросить всё
           </button>
         </div>
