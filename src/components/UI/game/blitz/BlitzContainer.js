@@ -20,15 +20,10 @@ const BlitzContainer = () => {
     fetchThemeNumbers()
   }, [])
 
-  const numbersNum = numbersArr.map((number) => number.title)
-
-  const options = [
-    { value: numbersNum[0], label: numbersNum[0] },
-    { value: numbersNum[1], label: numbersNum[1] },
-    { value: numbersNum[2], label: numbersNum[2] },
-    { value: numbersNum[3], label: numbersNum[3] },
-    { value: numbersNum[4], label: numbersNum[4] },
-  ]
+  const newNumbersArr = numbersArr.map((data) => ({
+    value: data.title,
+    label: data.title,
+  }))
 
   const div = () => {
     return (
@@ -37,7 +32,7 @@ const BlitzContainer = () => {
         placeholder={'Названия тем'}
         defaultValue={selectedOption}
         onChange={setSelectedOption}
-        options={options}
+        options={newNumbersArr}
       />
     )
   }
