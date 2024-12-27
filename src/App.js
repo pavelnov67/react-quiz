@@ -6,7 +6,7 @@ import AddQuestionPage from './components/UI/adminPage/AddQuestionPage'
 import ActiveGames from './components/UI/adminPage/ActiveGames'
 import BlitzQuestionsList from './components/UI/game/blitz/BlitzQuestionsList'
 import BlitzAddTheme from './components/UI/game/blitz/BlitzAddTheme'
-import BlitzAddQuestion from './components/UI/game/blitz/BlitzAddQuestion'
+import BlitzContainer from './components/UI/game/blitz/BlitzContainer'
 
 import NotFound from './components/NotFound'
 import './App.css'
@@ -22,7 +22,7 @@ function App() {
           <Route path="add_question_page" element={<AddQuestionPage />} />
           <Route path="blitz" element={<BlitzQuestionsList />} />
           <Route path="blitz_add_theme" element={<BlitzAddTheme />} />
-          <Route path="blitz_add_question" element={<BlitzAddQuestion />} />
+          <Route path="blitz_add_question" element={<BlitzContainer />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="*" element={<NotFound />} />

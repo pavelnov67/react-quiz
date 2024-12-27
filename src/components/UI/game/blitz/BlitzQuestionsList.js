@@ -17,9 +17,6 @@ const BlitzQuestionsList = () => {
       toast.error(err.message)
     }
   }
-  if (themesData) {
-    console.log(themesData)
-  }
 
   return (
     <div className={styles.blitz_container}>

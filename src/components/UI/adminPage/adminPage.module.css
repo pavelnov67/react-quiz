@@ -317,3 +317,13 @@ header {
   padding: 5px;
   border-radius: 3px;
 }
+
+.blitz_input_hide {
+  display: none;
+}
+
+.dropDown_list {
+  color: #000000;
+  width: 100%;
+  justify-self: center;
+}
