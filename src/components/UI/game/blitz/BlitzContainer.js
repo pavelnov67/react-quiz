@@ -38,23 +38,16 @@ const BlitzContainer = () => {
   }))
 
   const id = numbersArr.map((theme) => {
-    if (selectedOption.value === theme.title) {
-      return theme.id
-    }
+    if (selectedOption.value === theme.title) return theme.id
   })
 
   const themeNumber = id.find((i) => {
     if (i) return i
   })
 
-  console.log(themeNumber)
-
   return (
     <div>
-      <BlitzAddQuestion
-        themeNumber={themeNumber}
-        div={div}
-      />
+      <BlitzAddQuestion themeNumber={themeNumber} div={div} />
     </div>
   )
 }

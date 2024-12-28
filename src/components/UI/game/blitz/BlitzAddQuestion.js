@@ -32,29 +32,27 @@ const BlitzAddQuestion = ({ div, themeNumber }) => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-      />
-      <form
-        className={styles.adminForm}
-        onSubmit={handlePostQuestion}
-      >
+      <ToastContainer position="bottom-right" autoClose={2000} />
+      <form className={styles.adminForm} onSubmit={handlePostQuestion}>
         <h1>Форма добавления вопроса</h1>
         <hr />
         {div()}
-        <label>Текст вопроса</label>
-        <input
-          placeholder="Введите вопрос"
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <label>Текст ответа</label>
-        <input
-          placeholder="Введите ответ"
-          type="text"
-          onChange={(e) => setAnswer(e.target.value)}
-        />
+        <div className={styles.inputContainer}>
+          <label>Текст вопроса</label>
+          <input
+            className={styles.blitz_input}
+            placeholder="Введите вопрос"
+            type="text"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <label>Текст ответа</label>
+          <input
+            className={styles.blitz_input}
+            placeholder="Введите ответ"
+            type="text"
+            onChange={(e) => setAnswer(e.target.value)}
+          />
+        </div>
         <div className={styles.buttonContainer}>
           <button type="submit">Сохранить</button>
         </div>
