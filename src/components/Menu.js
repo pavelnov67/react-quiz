@@ -115,11 +115,14 @@ const Menu = () => {
             <br></br>
             <h3>Меню игры блиц</h3>
             <li>
-              <Link to="blitz" className={styles.anchor_btn_container}>
+              <Link
+                to="blitz_container"
+                className={styles.anchor_btn_container}
+              >
                 <div className={styles.side_icon}>
                   <CiViewList />
                 </div>
-                <button className={styles.anchor_btn}>Список вопросов</button>
+                <button className={styles.anchor_btn}>Инфо</button>
               </Link>
             </li>
             <li>

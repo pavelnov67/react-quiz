@@ -59,7 +59,7 @@ header {
 }
 
 .sidebar {
-  width: 52%;
+  margin: 5px;
 }
 
 .sidebar h3 {
@@ -107,7 +107,6 @@ header {
   text-decoration: none;
   color: #ffffff;
   text-align: start;
-  width: 100%;
   border: none;
   background-color: rgba(255, 255, 255, 0);
   padding: 10px;
@@ -316,4 +315,10 @@ header {
   font-size: 15px;
   padding: 5px;
   border-radius: 3px;
+}
+
+.dropDown_list {
+  color: #000000;
+  width: 100%;
+  justify-self: center;
 }
