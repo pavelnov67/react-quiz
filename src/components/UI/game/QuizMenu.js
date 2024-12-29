@@ -45,40 +45,16 @@ const Quiz = () => {
 
   return (
     <>
-      <ToastContainer position="bottom-right" autoClose={2000} />
-      {isActive ? (
-        <div>
-          <button
-            className={styles.back_to_menu_btn}
-            type="button"
-            onClick={isActiveToggle}
-          >
-            Назад
-          </button>
-          <QuestionList
-            reFetch={handleClickToFetch}
-            questionsData={questionsData}
-          />
-        </div>
-      ) : (
-        <div className={styles.quiz_container}>
-          <ToastContainer position="bottom-right" autoClose={3000} />
-          <button
-            className={styles.start_quiz_btn}
-            type="button"
-            onClick={handleClick}
-          >
-            Получить список вопросов
-          </button>
-          <button
-            className={styles.start_quiz_btn}
-            type="button"
-            onClick={handleClickThemes}
-          >
-            Получить список тем
-          </button>
-        </div>
-      )}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
+      <div>
+        <QuestionList
+          reFetch={handleClickToFetch}
+          questionsData={questionsData}
+        />
+      </div>
     </>
   )
 }

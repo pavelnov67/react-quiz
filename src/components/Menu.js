@@ -84,11 +84,14 @@ const Menu = () => {
           <ul>
             <h3>Меню игры 100/1</h3>
             <li>
-              <Link to="quiz" className={styles.anchor_btn_container}>
+              <Link
+                to="quiz"
+                className={styles.anchor_btn_container}
+              >
                 <div className={styles.side_icon}>
                   <CiViewList />
                 </div>
-                <button className={styles.anchor_btn}>Инфо</button>
+                <button className={styles.anchor_btn}>Список вопросов</button>
               </Link>
             </li>
             <li>
@@ -105,7 +108,10 @@ const Menu = () => {
               </Link>
             </li>
             <li>
-              <Link to="active_games" className={styles.anchor_btn_container}>
+              <Link
+                to="active_games"
+                className={styles.anchor_btn_container}
+              >
                 <div className={styles.side_icon}>
                   <SlGameController />
                 </div>

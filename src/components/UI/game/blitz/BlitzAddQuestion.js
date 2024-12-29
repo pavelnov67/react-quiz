@@ -7,6 +7,10 @@ import styles from '../../adminPage/adminPage.module.css'
 const BlitzAddQuestion = ({ div, themeNumber }) => {
   const [title, setTitle] = useState('')
   const [answer, setAnswer] = useState('')
+  const initialState = () => {
+    setAnswer('')
+    setTitle('')
+  }
 
   const handlePostQuestion = async (e) => {
     e.preventDefault()
@@ -25,6 +29,7 @@ const BlitzAddQuestion = ({ div, themeNumber }) => {
       }
       await instance.post(`${base_URL}/game/blitz.questions_add`, body)
       toast.info('Тема добавлена успешно!')
+      initialState()
     } catch (err) {
       toast.error(err.message)
     }
@@ -32,8 +37,14 @@ const BlitzAddQuestion = ({ div, themeNumber }) => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer position="bottom-right" autoClose={2000} />
-      <form className={styles.adminForm} onSubmit={handlePostQuestion}>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
+      <form
+        className={styles.adminForm}
+        onSubmit={handlePostQuestion}
+      >
         <h1>Форма добавления вопроса</h1>
         <hr />
         {div()}
@@ -43,6 +54,7 @@ const BlitzAddQuestion = ({ div, themeNumber }) => {
             className={styles.blitz_input}
             placeholder="Введите вопрос"
             type="text"
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <label>Текст ответа</label>
@@ -50,6 +62,7 @@ const BlitzAddQuestion = ({ div, themeNumber }) => {
             className={styles.blitz_input}
             placeholder="Введите ответ"
             type="text"
+            value={answer}
             onChange={(e) => setAnswer(e.target.value)}
           />
         </div>

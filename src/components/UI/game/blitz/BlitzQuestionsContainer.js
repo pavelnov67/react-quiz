@@ -8,25 +8,34 @@ import styles from '../../ui.module.css'
 const BlitzQuestionsContainer = ({ themeId }) => {
   const [questionData, setQuestionData] = useState([])
 
+  console.log(questionData)
+
   useEffect(() => {
-    const fetchQuestions = async () => {
+    const fetchQuestionsData = async () => {
       try {
         const data = await axios.get(
-          `${base_URL}/game/blitz.questions_list?theme_id=2`
+          `${base_URL}/game/blitz.questions_list?theme_id=1`
         )
         setQuestionData(data.data.data.questions)
       } catch (err) {
         toast.error(err.message)
       }
     }
-    fetchQuestions()
+    fetchQuestionsData()
   }, [])
 
   return (
     <div className={styles.blitz_container}>
-      <ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
       {questionData.map((question) => (
-        <BlitzQuestionViaTheme key={question.id} {...question} />
+        <BlitzQuestionViaTheme
+          className={styles.blitz_container}
+          key={question.id}
+          {...question}
+        />
       ))}
       <br></br>
     </div>
