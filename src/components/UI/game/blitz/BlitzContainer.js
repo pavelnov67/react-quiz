@@ -20,6 +20,11 @@ const BlitzContainer = () => {
     fetchThemeNumbers()
   }, [])
 
+  const newNumbersArr = numbersArr.map((data) => ({
+    value: data.title,
+    label: data.title,
+  }))
+
   const div = () => {
     return (
       <Select
@@ -32,11 +37,6 @@ const BlitzContainer = () => {
     )
   }
 
-  const newNumbersArr = numbersArr.map((data) => ({
-    value: data.title,
-    label: data.title,
-  }))
-
   const id = numbersArr.map((theme) => {
     if (selectedOption.value === theme.title) return theme.id
   })
@@ -47,7 +47,10 @@ const BlitzContainer = () => {
 
   return (
     <div>
-      <BlitzAddQuestion themeNumber={themeNumber} div={div} />
+      <BlitzAddQuestion
+        themeNumber={themeNumber}
+        div={div}
+      />
     </div>
   )
 }
