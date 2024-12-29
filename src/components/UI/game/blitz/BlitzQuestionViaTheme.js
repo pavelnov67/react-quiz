@@ -6,7 +6,7 @@ const BlitzQuestionViaTheme = ({ title, answer, id }) => {
   }
   return (
     <div className={styles.blitz_question_container}>
-      <label>Текст вопроса:</label>
+      <label>Текст вопроса №{id}:</label>
       <h3>{title}</h3>
       <label>Текст ответа:</label>
       <h3>{answer}</h3>

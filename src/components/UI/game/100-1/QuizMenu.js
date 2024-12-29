@@ -2,14 +2,13 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import QuestionList from './QuestionList'
-import styles from '../ui.module.css'
-import { base_URL } from '../../variables/vars'
+import { base_URL } from '../../../variables/vars'
 
 const url_APIGet = `${base_URL}/game/quiz.questions_list?theme_id=1`
 
 const Quiz = () => {
   const [isActive, setIsActive] = useState(false)
-  const [questionsData, setQuestionsData] = useState({})
+  const [questionsData, setQuestionsData] = useState([])
   const [click, setClick] = useState(0)
 
   const handleClick = async () => {

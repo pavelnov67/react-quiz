@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
-import styles from './question.module.css'
-import { base_URL } from '../../variables/vars'
+import styles from '../question.module.css'
+import { base_URL } from '../../../variables/vars'
 
 axios.defaults.withCredentials = true
 
@@ -28,9 +28,15 @@ const Question = ({ questionsData, reFetch }) => {
 
   return (
     <main className={styles.questions_container}>
-      <ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
       {questions.map((question) => (
-        <div key={question.id} className={styles.question_container}>
+        <div
+          key={question.id}
+          className={styles.question_container}
+        >
           <h2>Вопрос №{question.id}</h2>
           <h3>{question.title}</h3>
           <hr></hr>
@@ -40,7 +46,10 @@ const Question = ({ questionsData, reFetch }) => {
           </div>
           <div className={styles.answer_container}>
             {question.answers.map((answer) => (
-              <div className={styles.answers} key={answer.id}>
+              <div
+                className={styles.answers}
+                key={answer.id}
+              >
                 <h3>{answer.title}</h3>
                 <h3>{answer.score}</h3>
               </div>

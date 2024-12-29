@@ -8,8 +8,6 @@ import styles from '../../ui.module.css'
 const BlitzQuestionsContainer = ({ themeId }) => {
   const [questionData, setQuestionData] = useState([])
 
-  console.log(questionData)
-
   useEffect(() => {
     const fetchQuestionsData = async () => {
       try {

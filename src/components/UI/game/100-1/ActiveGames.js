@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from '../ui.module.css'
+import styles from '../../ui.module.css'
 import ActiveGamesPanel from './ActiveGamesPanel'
 
 const ActiveGames = () => {
