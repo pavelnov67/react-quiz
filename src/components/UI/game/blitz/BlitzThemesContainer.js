@@ -28,6 +28,7 @@ const BlitzThemesContainer = (props) => {
   if (themesData) {
     return (
       <div className={styles.blitz_container}>
+        <p>Раздел в разработке</p>
         <ToastContainer
           position="bottom-right"
           autoClose={2000}

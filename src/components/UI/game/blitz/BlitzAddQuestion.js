@@ -28,7 +28,7 @@ const BlitzAddQuestion = ({ div, themeNumber }) => {
         theme_id: themeNumber,
       }
       await instance.post(`${base_URL}/game/blitz.questions_add`, body)
-      toast.info('Тема добавлена успешно!')
+      toast.info('Вопрос добавлен успешно!')
       initialState()
     } catch (err) {
       toast.error(err.message)

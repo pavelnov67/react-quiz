@@ -102,9 +102,7 @@ const Menu = () => {
                 <div className={styles.side_icon}>
                   <BiAddToQueue />
                 </div>
-                <button className={styles.anchor_btn}>
-                  Добавление вопроса
-                </button>
+                <button className={styles.anchor_btn}>Добавить вопрос</button>
               </Link>
             </li>
             <li>
@@ -128,7 +126,7 @@ const Menu = () => {
                 <div className={styles.side_icon}>
                   <CiViewList />
                 </div>
-                <button className={styles.anchor_btn}>Инфо</button>
+                <button className={styles.anchor_btn}>Списоок тем</button>
               </Link>
             </li>
             <li>

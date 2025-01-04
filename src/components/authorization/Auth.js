@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 import styles from './auth.module.css'
 import { base_URL } from '../variables/vars'
 
@@ -17,7 +18,7 @@ const Auth = () => {
     e.preventDefault()
     const instance = axios.create({
       baseURL: url_APIPost,
-      timeout: 10000,
+      timeout: 5000,
       headers: {
         accept: 'application/json',
         'Content-Type': 'application/json',
@@ -29,15 +30,24 @@ const Auth = () => {
         password,
       }
       await instance.post(url_APIPost, loginBody)
-      navigate('/')
+      //navigate('/')
     } catch (err) {
-      setError(err.message)
+      if (err.status === 403) {
+        setError('Неверные логин или пароль')
+      }
     }
   }
 
   return (
     <div className={styles.authFormContainer}>
-      <form className={styles.authForm} onSubmit={handleSubmit}>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
+      <form
+        className={styles.authForm}
+        onSubmit={handleSubmit}
+      >
         <h1>Авторизация</h1>
         <div className={styles.form_inputs}>
           <label>Email</label>
