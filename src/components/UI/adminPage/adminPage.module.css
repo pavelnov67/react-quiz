@@ -50,6 +50,9 @@ header {
 .logOut_btn {
   background-color: #f36f6fe5;
 }
+.logOut_btn:hover {
+  background-color: #a71616;
+}
 
 .side_container {
   display: grid;

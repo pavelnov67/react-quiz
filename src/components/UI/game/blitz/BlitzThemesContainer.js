@@ -44,7 +44,7 @@ const BlitzThemesContainer = (props) => {
     setIsActive(!isActive)
   }
 
-  if (themesData) {
+  if (themesData.length > 0) {
     return (
       <div className={styles.blitz_container}>
         <p>Раздел в разработке</p>
@@ -62,36 +62,45 @@ const BlitzThemesContainer = (props) => {
         {isActive ? (
           <BlitzQuestionsContainer />
         ) : (
-          <div>
+          <div className={styles.blitz_container}>
             {themesData.map((theme) => (
               <div
                 key={theme.id}
-                className={styles.theme_container}
+                className={styles.blitz_theme_container}
               >
-                <div>
-                  <h3>Id: {theme.id}</h3>
-                  <h3>Тема: {theme.title}</h3>
-                  <h3>Описание: {theme.description}</h3>
-                  <button
-                    className={styles.start_quiz_btn}
-                    type="button"
-                    onClick={handleIsActive}
-                  >
-                    Вопросы из темы
-                  </button>
-                  <button
-                    className={styles.delete_btn}
-                    type="button"
-                    onClick={() => handleDelete(theme.id)}
-                  >
-                    Удалить
-                  </button>
+                <div className={styles.theme_item_container}>
+                  <h3>
+                    Тема №{theme.id}: {theme.title}
+                  </h3>
+                  <p>Описание: {theme.description}</p>
+                  <div className={styles.theme_item_btns_container}>
+                    <button
+                      className={styles.show_questions_btn}
+                      type="button"
+                      onClick={handleIsActive}
+                    >
+                      Показать вопросы
+                    </button>
+                    <button
+                      className={styles.delete_btn}
+                      type="button"
+                      onClick={() => handleDelete(theme.id)}
+                    >
+                      Удалить тему
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         )}
       </div>
+    )
+  } else {
+    return (
+      <>
+        <h2>Список тем пуст</h2>
+      </>
     )
   }
 }
