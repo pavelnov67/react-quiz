@@ -21,6 +21,23 @@ const BlitzThemesContainer = (props) => {
     fetchThemesData()
   }, [])
 
+  const handleDelete = async (id) => {
+    const instance = axios.create({
+      timeout: 5000,
+      headers: {
+        accept: 'application/json',
+      },
+    })
+    try {
+      await instance.delete(
+        `${base_URL}/game/blitz.themes_delete_by_id?theme_id=${id}`
+      )
+    } catch (err) {
+      console.log(err)
+      toast.error(err.message)
+    }
+  }
+
   const handleIsActive = () => {
     setIsActive(!isActive)
   }
@@ -59,6 +76,13 @@ const BlitzThemesContainer = (props) => {
                     onClick={handleIsActive}
                   >
                     Вопросы из темы
+                  </button>
+                  <button
+                    className={styles.delete_btn}
+                    type="button"
+                    onClick={() => handleDelete(theme.id)}
+                  >
+                    Удалить
                   </button>
                 </div>
               </div>
