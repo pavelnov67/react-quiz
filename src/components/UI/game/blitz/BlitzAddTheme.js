@@ -25,16 +25,25 @@ const BlitzAddTheme = () => {
         toast.info('Тема добавлена успешно!')
       } catch (err) {
         setStatus({ success: false })
-        console.log(err.message)
-        toast.error(err.message)
+        if (err.status === 400) {
+          toast.error('Все поля должны быть заполнены!')
+        } else if (err.status === 409) {
+          toast.error('Такая тема уже существует')
+        }
       }
     },
   })
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer position="bottom-right" autoClose={2000} />
-      <form className={styles.adminForm} onSubmit={formik.handleSubmit}>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
+      <form
+        className={styles.adminForm}
+        onSubmit={formik.handleSubmit}
+      >
         <h1>Форма добавления темы</h1>
         <hr />
         <div className={styles.inputContainer}>

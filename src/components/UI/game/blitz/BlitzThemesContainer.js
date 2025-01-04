@@ -8,6 +8,7 @@ import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 const BlitzThemesContainer = (props) => {
   const [themesData, setThemesData] = useState([])
   const [isActive, setIsActive] = useState(false)
+  const [reFetch, setReFetch] = useState(null)
 
   useEffect(() => {
     const fetchThemesData = async () => {
@@ -19,7 +20,7 @@ const BlitzThemesContainer = (props) => {
       }
     }
     fetchThemesData()
-  }, [])
+  }, [reFetch])
 
   const handleDelete = async (id) => {
     const instance = axios.create({
@@ -32,6 +33,7 @@ const BlitzThemesContainer = (props) => {
       await instance.delete(
         `${base_URL}/game/blitz.themes_delete_by_id?theme_id=${id}`
       )
+      setReFetch(reFetch + 1)
     } catch (err) {
       console.log(err)
       toast.error(err.message)
