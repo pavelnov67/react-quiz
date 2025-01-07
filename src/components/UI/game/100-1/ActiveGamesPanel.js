@@ -1,5 +1,5 @@
 const ActiveGamesPanel = () => {
-  return <div>Здесь будут формы взаимодействия с текущими играми</div>
+  return <div></div>
 }
 
 export default ActiveGamesPanel

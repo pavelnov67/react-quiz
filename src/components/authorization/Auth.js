@@ -15,32 +15,41 @@ const Auth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const instance = axios.create({
-      baseURL: url_APIPost,
-      timeout: 10000,
-      headers: {
-        accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-    try {
-      const loginBody = {
-        email,
-        password,
+    if (email && password) {
+      const instance = axios.create({
+        baseURL: url_APIPost,
+        timeout: 5000,
+        headers: {
+          accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      try {
+        const loginBody = {
+          email,
+          password,
+        }
+        await instance.post(url_APIPost, loginBody)
+        navigate('/')
+      } catch (err) {
+        if (err.status === 403) {
+          setError('Неверные логин или пароль')
+        }
       }
-      await instance.post(url_APIPost, loginBody)
-      navigate('/')
-    } catch (err) {
-      setError(err.message)
+    } else {
+      setError('Все поля должны быть заполнены')
     }
   }
 
   return (
     <div className={styles.authFormContainer}>
-      <form className={styles.authForm} onSubmit={handleSubmit}>
+      <form
+        className={styles.authForm}
+        onSubmit={handleSubmit}
+      >
         <h1>Авторизация</h1>
         <div className={styles.form_inputs}>
-          <label>Email</label>
+          <label>Электронная почта</label>
           <input
             placeholder="Введите email"
             onChange={(e) => setEmail(e.target.value)}

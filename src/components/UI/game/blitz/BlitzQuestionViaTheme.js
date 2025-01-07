@@ -1,11 +1,11 @@
 import styles from '../../ui.module.css'
 
 const BlitzQuestionViaTheme = ({ title, answer, id }) => {
-  const handkeDeleteQuestion = () => {
+  const handleDeleteQuestion = () => {
     console.log(`Удалаить вопрос с id=${id}`)
   }
   return (
-    <div className={styles.blitz_question_container}>
+    <div>
       <label>Текст вопроса №{id}:</label>
       <h3>{title}</h3>
       <label>Текст ответа:</label>
@@ -13,7 +13,7 @@ const BlitzQuestionViaTheme = ({ title, answer, id }) => {
       <button
         className={styles.delete_btn}
         type="button"
-        onClick={handkeDeleteQuestion}
+        onClick={handleDeleteQuestion}
       >
         Удалить
       </button>
