@@ -82,7 +82,7 @@ const Menu = () => {
       <div className={styles.side_container}>
         <div className={styles.sidebar}>
           <ul>
-            <h3>Меню игры 100/1</h3>
+            <h3>Меню игры сто к одному</h3>
             <li>
               <Link
                 to="quiz"

@@ -12,7 +12,7 @@ const BlitzQuestionsContainer = ({ themeId }) => {
     const fetchQuestionsData = async () => {
       try {
         const data = await axios.get(
-          `${base_URL}/game/blitz.questions_list?theme_id=1`
+          `${base_URL}/game/blitz.questions_list?theme_id=${themeId}`
         )
         setQuestionData(data.data.data.questions)
       } catch (err) {
@@ -30,7 +30,6 @@ const BlitzQuestionsContainer = ({ themeId }) => {
       />
       {questionData.map((question) => (
         <BlitzQuestionViaTheme
-          className={styles.blitz_container}
           key={question.id}
           {...question}
         />

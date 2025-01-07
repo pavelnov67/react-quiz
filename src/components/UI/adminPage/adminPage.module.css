@@ -56,7 +56,7 @@ header {
 
 .side_container {
   display: grid;
-  grid-template-columns: 0.2fr 0.3fr;
+  grid-template-columns: 0.15fr 0.3fr;
   justify-content: center;
   margin-bottom: 30px;
 }

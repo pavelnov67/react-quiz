@@ -5,7 +5,7 @@ import { base_URL } from '../../../variables/vars'
 import styles from '../../ui.module.css'
 import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 
-const BlitzThemesContainer = (props) => {
+const BlitzThemesContainer = () => {
   const [themesData, setThemesData] = useState([])
   const [isActive, setIsActive] = useState(false)
   const [reFetch, setReFetch] = useState(null)
@@ -40,7 +40,7 @@ const BlitzThemesContainer = (props) => {
     }
   }
 
-  const handleIsActive = () => {
+  const handleIsActive = (id) => {
     setIsActive(!isActive)
   }
 
@@ -52,22 +52,26 @@ const BlitzThemesContainer = (props) => {
           position="bottom-right"
           autoClose={2000}
         />
-        <button
-          className={styles.start_quiz_btn}
-          type="button"
-          onClick={handleIsActive}
-        >
-          Назад в темы
-        </button>
         {isActive ? (
-          <BlitzQuestionsContainer />
+          <button
+            className={styles.start_quiz_btn}
+            type="button"
+            onClick={handleIsActive}
+          >
+            Назад в темы
+          </button>
         ) : (
-          <div className={styles.blitz_container}>
-            {themesData.map((theme) => (
-              <div
-                key={theme.id}
-                className={styles.blitz_theme_container}
-              >
+          ''
+        )}
+        <div className={styles.blitz_container}>
+          {themesData.map((theme) => (
+            <div
+              key={theme.id}
+              className={styles.blitz_theme_container}
+            >
+              {isActive ? (
+                <BlitzQuestionsContainer themeId={theme.id} />
+              ) : (
                 <div className={styles.theme_item_container}>
                   <h3>
                     Тема №{theme.id}: {theme.title}
@@ -77,7 +81,7 @@ const BlitzThemesContainer = (props) => {
                     <button
                       className={styles.show_questions_btn}
                       type="button"
-                      onClick={handleIsActive}
+                      onClick={() => handleIsActive(theme.id)}
                     >
                       Показать вопросы
                     </button>
@@ -90,10 +94,10 @@ const BlitzThemesContainer = (props) => {
                     </button>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     )
   } else {
