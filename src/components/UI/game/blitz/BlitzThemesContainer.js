@@ -101,11 +101,7 @@ const BlitzThemesContainer = () => {
       </div>
     )
   } else {
-    return (
-      <>
-        <h2>Список тем пуст</h2>
-      </>
-    )
+    return <h2>Данные отсутствуют</h2>
   }
 }
 

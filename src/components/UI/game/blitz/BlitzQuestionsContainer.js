@@ -22,21 +22,25 @@ const BlitzQuestionsContainer = ({ themeId }) => {
     fetchQuestionsData()
   }, [])
 
-  return (
-    <div className={styles.blitz_container}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-      />
-      {questionData.map((question) => (
-        <BlitzQuestionViaTheme
-          key={question.id}
-          {...question}
+  if (questionData.length > 0) {
+    return (
+      <div className={styles.blitz_container}>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
         />
-      ))}
-      <br></br>
-    </div>
-  )
+        {questionData.map((question) => (
+          <BlitzQuestionViaTheme
+            key={question.id}
+            {...question}
+          />
+        ))}
+        <br></br>
+      </div>
+    )
+  } else {
+    return <h3>Данные отсутствуют</h3>
+  }
 }
 
 export default BlitzQuestionsContainer
