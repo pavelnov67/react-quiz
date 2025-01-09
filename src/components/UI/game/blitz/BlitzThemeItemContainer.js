@@ -5,7 +5,7 @@ import { base_URL } from '../../../variables/vars'
 import styles from '../../ui.module.css'
 import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 
-const BlitzThemeItemContainer = ({ id, title, description, reFetch }) => {
+const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   const [questionData, setQuestionData] = useState([])
   const [isActive, setIsActive] = useState(false)
 
@@ -34,7 +34,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetch }) => {
       await instance.delete(
         `${base_URL}/game/blitz.themes_delete_by_id?theme_id=${id}`
       )
-      reFetch((i) => i++)
+      reFetchThemes((i) => i++)
     } catch (err) {
       console.log(err)
       toast.error(err.message)
@@ -50,7 +50,11 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetch }) => {
       <ToastContainer position="bottom-right" autoClose={2000} />
       <div className={styles.blitz_container}>
         {isActive ? (
-          <BlitzQuestionsContainer questionData={questionData} />
+          <BlitzQuestionsContainer
+            questionData={questionData}
+            reFetchQuestions={fetchQuestionsData}
+            themeId={id}
+          />
         ) : (
           <div className={styles.theme_item_container}>
             <div className={styles.blitz_theme_container}>

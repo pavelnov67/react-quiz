@@ -1,9 +1,31 @@
+import axios from 'axios'
+import { base_URL } from '../../../variables/vars'
 import styles from '../../ui.module.css'
 
-const BlitzQuestionItemContainer = ({ title, answer, id }) => {
-  const handleDeleteQuestion = () => {
-    console.log(`Удалаить вопрос с id=${id}`)
+const BlitzQuestionItemContainer = ({
+  title,
+  answer,
+  id,
+  reFetchQuestions,
+  themeId,
+}) => {
+  const handleDeleteQuestion = async () => {
+    const instance = axios.create({
+      timeout: 5000,
+      headers: {
+        accept: 'application/json',
+      },
+    })
+    try {
+      await instance.delete(
+        `${base_URL}/game/blitz.questions_delete_by_id?question_id=${id}`
+      )
+      reFetchQuestions(themeId)
+    } catch (err) {
+      console.log(err)
+    }
   }
+
   return (
     <div className={styles.blitz_question_item_container}>
       <label>Текст вопроса №{id}:</label>

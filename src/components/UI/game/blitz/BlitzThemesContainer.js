@@ -7,7 +7,7 @@ import Container from './BlitzThemeItemContainer'
 
 const BlitzThemesContainer = () => {
   const [themesData, setThemesData] = useState([])
-  const [reFetch, setReFetch] = useState(null)
+  const [reFetchThemes, setReFetchThemes] = useState(null)
 
   useEffect(() => {
     const fetchThemesData = async () => {
@@ -19,13 +19,13 @@ const BlitzThemesContainer = () => {
       }
     }
     fetchThemesData()
-  }, [reFetch])
+  }, [reFetchThemes])
 
   return (
     <div className={styles.blitz_container}>
       <ToastContainer position="bottom-right" autoClose={2000} />
       {themesData.map((theme) => (
-        <Container key={theme.id} {...theme} reFetch={setReFetch} />
+        <Container key={theme.id} {...theme} reFetchThemes={setReFetchThemes} />
       ))}
     </div>
   )
