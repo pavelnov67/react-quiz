@@ -3,7 +3,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../ui.module.css'
-import Container from './Container'
+import Container from './BlitzThemeItemContainer'
 
 const BlitzThemesContainer = () => {
   const [themesData, setThemesData] = useState([])
@@ -23,7 +23,6 @@ const BlitzThemesContainer = () => {
 
   return (
     <div className={styles.blitz_container}>
-      <p>Раздел в разработке</p>
       <ToastContainer position="bottom-right" autoClose={2000} />
       {themesData.map((theme) => (
         <Container key={theme.id} {...theme} reFetch={setReFetch} />

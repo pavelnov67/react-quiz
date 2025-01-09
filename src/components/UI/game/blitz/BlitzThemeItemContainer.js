@@ -5,7 +5,7 @@ import { base_URL } from '../../../variables/vars'
 import styles from '../../ui.module.css'
 import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 
-const Container = ({ id, title, description, reFetch }) => {
+const BlitzThemeItemContainer = ({ id, title, description, reFetch }) => {
   const [questionData, setQuestionData] = useState([])
   const [isActive, setIsActive] = useState(false)
 
@@ -93,4 +93,4 @@ const Container = ({ id, title, description, reFetch }) => {
   )
 }
 
-export default Container
+export default BlitzThemeItemContainer

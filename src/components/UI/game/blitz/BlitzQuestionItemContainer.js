@@ -1,6 +1,6 @@
 import styles from '../../ui.module.css'
 
-const BlitzQuestionViaTheme = ({ title, answer, id }) => {
+const BlitzQuestionItemContainer = ({ title, answer, id }) => {
   const handleDeleteQuestion = () => {
     console.log(`Удалаить вопрос с id=${id}`)
   }
@@ -21,4 +21,4 @@ const BlitzQuestionViaTheme = ({ title, answer, id }) => {
   )
 }
 
-export default BlitzQuestionViaTheme
+export default BlitzQuestionItemContainer
