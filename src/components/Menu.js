@@ -4,6 +4,7 @@ import { base_URL } from './variables/vars'
 import { Outlet } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 import { RiAdminLine } from 'react-icons/ri'
 import { BiAddToQueue } from 'react-icons/bi'
 import { CiViewList, CiCircleQuestion } from 'react-icons/ci'
@@ -21,6 +22,7 @@ const Menu = () => {
         setUserName(userData.data.data.email)
       } catch (err) {
         console.log(err)
+        toast.error('Требуется авторизация')
       }
     }
     fetchCurrentUser()
@@ -50,6 +52,7 @@ const Menu = () => {
 
   return (
     <div className={styles.menu_container}>
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <header>
         <div className={styles.header_main_container}>
           <h2>Страница администратора</h2>
@@ -84,10 +87,7 @@ const Menu = () => {
           <ul>
             <h3>Меню игры сто к одному</h3>
             <li>
-              <Link
-                to="quiz"
-                className={styles.anchor_btn_container}
-              >
+              <Link to="quiz" className={styles.anchor_btn_container}>
                 <div className={styles.side_icon}>
                   <CiViewList />
                 </div>
@@ -106,10 +106,7 @@ const Menu = () => {
               </Link>
             </li>
             <li>
-              <Link
-                to="active_games"
-                className={styles.anchor_btn_container}
-              >
+              <Link to="active_games" className={styles.anchor_btn_container}>
                 <div className={styles.side_icon}>
                   <SlGameController />
                 </div>
@@ -120,7 +117,7 @@ const Menu = () => {
             <h3>Меню игры блиц</h3>
             <li>
               <Link
-                to="blitz_container"
+                to="blitz_themes_container"
                 className={styles.anchor_btn_container}
               >
                 <div className={styles.side_icon}>
@@ -149,6 +146,15 @@ const Menu = () => {
                   <CiCircleQuestion />
                 </div>
                 <button className={styles.anchor_btn}>Добавить вопрос</button>
+              </Link>
+            </li>
+            <h3>Меню чатов</h3>
+            <li>
+              <Link to="conversations" className={styles.anchor_btn_container}>
+                <div className={styles.side_icon}>
+                  <CiViewList />
+                </div>
+                <button className={styles.anchor_btn}>Чаты</button>
               </Link>
             </li>
           </ul>
