@@ -117,7 +117,7 @@ const Menu = () => {
             <h3>Меню игры блиц</h3>
             <li>
               <Link
-                to="blitz_container"
+                to="blitz_themes_container"
                 className={styles.anchor_btn_container}
               >
                 <div className={styles.side_icon}>
