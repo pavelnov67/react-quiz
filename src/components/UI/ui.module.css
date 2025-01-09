@@ -46,7 +46,8 @@
 }
 
 .blitz_container,
-.blitz_question_container {
+.blitz_question_container,
+.blitz_question_item_container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -85,6 +86,12 @@
   box-shadow: 5px 5px 10px grey;
   box-sizing: border-box;
   padding: 5px;
+}
+
+.blitz_question_item_container {
+  border: 1px solid rgba(255, 255, 255, 0.178);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .delete_btn {

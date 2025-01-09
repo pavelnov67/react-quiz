@@ -48,36 +48,26 @@ const BlitzThemesContainer = () => {
     return (
       <div className={styles.blitz_container}>
         <p>Раздел в разработке</p>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={2000}
-        />
-        {isActive ? (
-          <button
-            className={styles.start_quiz_btn}
-            type="button"
-            onClick={handleIsActive}
-          >
-            Назад в темы
-          </button>
-        ) : (
-          ''
-        )}
+        <ToastContainer position="bottom-right" autoClose={2000} />
         <div className={styles.blitz_container}>
           {themesData.map((theme) => (
-            <div
-              key={theme.id}
-              className={styles.blitz_theme_container}
-            >
-              {isActive ? (
-                <BlitzQuestionsContainer themeId={theme.id} />
-              ) : (
-                <div className={styles.theme_item_container}>
-                  <h3>
-                    Тема №{theme.id}: {theme.title}
-                  </h3>
-                  <p>Описание: {theme.description}</p>
-                  <div className={styles.theme_item_btns_container}>
+            <div key={theme.id} className={styles.blitz_theme_container}>
+              <div className={styles.theme_item_container}>
+                <h3>
+                  Тема №{theme.id}: {theme.title}
+                </h3>
+                <p>Описание: {theme.description}</p>
+                {isActive ? <BlitzQuestionsContainer themeId={theme.id} /> : ''}
+                <div className={styles.theme_item_btns_container}>
+                  {isActive ? (
+                    <button
+                      className={styles.start_quiz_btn}
+                      type="button"
+                      onClick={handleIsActive}
+                    >
+                      Назад в темы
+                    </button>
+                  ) : (
                     <button
                       className={styles.show_questions_btn}
                       type="button"
@@ -85,23 +75,23 @@ const BlitzThemesContainer = () => {
                     >
                       Показать вопросы
                     </button>
-                    <button
-                      className={styles.delete_btn}
-                      type="button"
-                      onClick={() => handleDelete(theme.id)}
-                    >
-                      Удалить тему
-                    </button>
-                  </div>
+                  )}
+                  <button
+                    className={styles.delete_btn}
+                    type="button"
+                    onClick={() => handleDelete(theme.id)}
+                  >
+                    Удалить тему
+                  </button>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
       </div>
     )
-  } else {
-    return <h2>Данные отсутствуют</h2>
+  } else if (isActive) {
+    handleIsActive()
   }
 }
 

@@ -5,7 +5,7 @@ import { base_URL } from '../../../variables/vars'
 import BlitzQuestionViaTheme from './BlitzQuestionViaTheme'
 import styles from '../../ui.module.css'
 
-const BlitzQuestionsContainer = ({ themeId }) => {
+const Container = ({ themeId }) => {
   const [questionData, setQuestionData] = useState([])
 
   useEffect(() => {
@@ -29,6 +29,7 @@ const BlitzQuestionsContainer = ({ themeId }) => {
         {questionData.map((question) => (
           <BlitzQuestionViaTheme key={question.id} {...question} />
         ))}
+        <br></br>
       </div>
     )
   } else {
@@ -36,4 +37,4 @@ const BlitzQuestionsContainer = ({ themeId }) => {
   }
 }
 
-export default BlitzQuestionsContainer
+export default Container
