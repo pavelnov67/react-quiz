@@ -148,6 +148,15 @@ const Menu = () => {
                 <button className={styles.anchor_btn}>Добавить вопрос</button>
               </Link>
             </li>
+            <h3>Меню чатов</h3>
+            <li>
+              <Link to="conversations" className={styles.anchor_btn_container}>
+                <div className={styles.side_icon}>
+                  <CiViewList />
+                </div>
+                <button className={styles.anchor_btn}>Чаты</button>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className={styles.content}>
