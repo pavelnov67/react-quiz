@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import axios from 'axios'
 import styles from '../question.module.css'
 import { base_URL } from '../../../variables/vars'
-import PopUp from '../../components/pop-up'
+import PopUp from '../../UIcomponents/pop-up'
 
 const QuestionItem = ({ id, title, answers, reFetch }) => {
   const [show, setShow] = useState(false)

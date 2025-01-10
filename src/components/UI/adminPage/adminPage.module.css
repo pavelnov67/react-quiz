@@ -92,6 +92,11 @@ header {
   }
 }
 
+.head_name {
+  text-align: center;
+  color: #ffffff44;
+}
+
 .anchor_btn_container {
   display: flex;
   flex-direction: row;

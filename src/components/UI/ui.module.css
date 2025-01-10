@@ -1,3 +1,8 @@
+.head_name {
+  text-align: center;
+  color: #ffffff44;
+}
+
 .quiz_container {
   display: flex;
   justify-content: center;

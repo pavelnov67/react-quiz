@@ -37,14 +37,9 @@ const BlitzAddQuestion = ({ div, themeNumber }) => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-      />
-      <form
-        className={styles.adminForm}
-        onSubmit={handlePostQuestion}
-      >
+      <h3 className={styles.head_name}>Меню игры блиц</h3>
+      <ToastContainer position="bottom-right" autoClose={2000} />
+      <form className={styles.adminForm} onSubmit={handlePostQuestion}>
         <h1>Форма добавления вопроса</h1>
         <hr />
         {div()}

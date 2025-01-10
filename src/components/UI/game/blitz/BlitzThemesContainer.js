@@ -23,6 +23,7 @@ const BlitzThemesContainer = () => {
 
   return (
     <div className={styles.blitz_container}>
+      <h3 className={styles.head_name}>Меню игры блиц</h3>
       <ToastContainer position="bottom-right" autoClose={2000} />
       {themesData.map((theme) => (
         <BlitzThemeItemContainer
