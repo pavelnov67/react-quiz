@@ -17,7 +17,8 @@
 
 .start_quiz_btn,
 .back_to_menu_btn,
-.show_questions_btn {
+.show_questions_btn,
+.text_btn {
   max-width: 150px;
   font-size: 18px;
   background-color: #94bd02e5;
@@ -94,7 +95,8 @@
   padding: 10px;
 }
 
-.delete_btn {
+.delete_btn,
+.flat_btn {
   max-width: 100px;
   font-size: 18px;
   background-color: #db3c3c;
@@ -111,4 +113,36 @@
 
 .hidden {
   display: none;
+}
+
+.modal_content,
+.modal_header,
+.modal_footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #4e4e4e28;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  padding: 20px;
+  width: 205px;
+  margin: auto;
+  border-radius: 10px;
+  gap: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal_header,
+.modal_body {
+  align-items: center;
+}
+
+.modal_body {
+  color: aqua;
+}
+
+.modal_footer {
+  justify-content: flex-end;
+  gap: 24px;
+  margin-top: 40px;
 }

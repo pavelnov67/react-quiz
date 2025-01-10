@@ -8,7 +8,7 @@ import BlitzAddQuestion from './BlitzAddQuestion'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../adminPage/adminPage.module.css'
 
-const BlitzContainer = () => {
+const BlitzFetchThemeContainer = () => {
   const [numbersArr, setNumbersArr] = useState([])
   const [selectedOption, setSelectedOption] = useState([])
   useEffect(() => {
@@ -50,12 +50,9 @@ const BlitzContainer = () => {
 
   return (
     <div>
-      <BlitzAddQuestion
-        themeNumber={themeNumber}
-        div={div}
-      />
+      <BlitzAddQuestion themeNumber={themeNumber} div={div} />
     </div>
   )
 }
 
-export default BlitzContainer
+export default BlitzFetchThemeContainer
