@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import styles from '../ui.module.css'
 
-const PopUp = ({ show, onCancel, onClose, deleteData }) => {
+const PopUp = ({ show, onCancel, onClose, deleteData, id }) => {
   const modalRef = useRef(null)
   const closeModalOnClickOut = (e) => {
     if (
@@ -49,7 +49,7 @@ const PopUp = ({ show, onCancel, onClose, deleteData }) => {
       <div className={styles.modal_backdrop}>
         <div ref={modalRef} className={styles.modal_content}>
           <div className={styles.body}>
-            <h3>Удалить вопрос?</h3>
+            <h3>Удалить вопрос № {id}?</h3>
           </div>
           <div className={styles.footer}>
             <button onClick={onCancelClicked} className={styles.text_btn}>
