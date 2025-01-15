@@ -21,6 +21,7 @@ const ConversationsContainer = () => {
   }, [])
   return (
     <div className={styles.blitz_container}>
+      <h3 className={styles.head_name}>Чаты</h3>
       <ToastContainer position="bottom-right" autoClose={2000} />
       {conversationData.map((conversation) => (
         <ConversationItemContainer key={conversation.id} {...conversation} />

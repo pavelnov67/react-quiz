@@ -6,7 +6,7 @@ import AddQuestionPage from './components/UI/game/100-1/AddQuestionPage'
 import ActiveGames from './components/UI/game/100-1/ActiveGames'
 import BlitzThemesContainer from './components/UI/game/blitz/BlitzThemesContainer'
 import BlitzAddTheme from './components/UI/game/blitz/BlitzAddTheme'
-import BlitzContainer from './components/UI/game/blitz/BlitzContainer'
+import BlitzFetchThemeContainer from './components/UI/game/blitz/BlitzFetchThemeContainer'
 import ConversationsContainer from './components/UI/game/conversations/ConversationsContainer'
 import NotFound from './components/NotFound'
 import './App.css'
@@ -25,7 +25,10 @@ function App() {
             element={<BlitzThemesContainer />}
           />
           <Route path="blitz_add_theme" element={<BlitzAddTheme />} />
-          <Route path="blitz_add_question" element={<BlitzContainer />} />
+          <Route
+            path="blitz_add_question"
+            element={<BlitzFetchThemeContainer />}
+          />
           <Route path="conversations" element={<ConversationsContainer />} />
         </Route>
         <Route path="*" element={<NotFound />} />

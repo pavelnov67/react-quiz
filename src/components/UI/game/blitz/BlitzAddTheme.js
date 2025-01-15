@@ -36,14 +36,9 @@ const BlitzAddTheme = () => {
 
   return (
     <div className={styles.adminFormContainer}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-      />
-      <form
-        className={styles.adminForm}
-        onSubmit={formik.handleSubmit}
-      >
+      <h3 className={styles.head_name}>Меню игры блиц</h3>
+      <ToastContainer position="bottom-right" autoClose={2000} />
+      <form className={styles.adminForm} onSubmit={formik.handleSubmit}>
         <h1>Форма добавления темы</h1>
         <hr />
         <div className={styles.inputContainer}>

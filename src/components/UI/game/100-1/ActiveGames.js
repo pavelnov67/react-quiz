@@ -3,7 +3,12 @@ import styles from '../../ui.module.css'
 import ActiveGamesPanel from './ActiveGamesPanel'
 
 const ActiveGames = () => {
-  return <p>Раздел в разработке</p>
+  return (
+    <>
+      <h3 className={styles.head_name}>Меню игры сто к одному</h3>
+      <p>Раздел в разработке</p>
+    </>
+  )
 }
 
 /*

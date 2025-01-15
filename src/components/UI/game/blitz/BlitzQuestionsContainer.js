@@ -5,9 +5,13 @@ const BlitzQuestionsContainer = ({
   questionData,
   reFetchQuestions,
   themeId,
+  title,
 }) => {
   return (
     <div className={styles.blitz_container}>
+      <h3>
+        Тема №{themeId}: {title}
+      </h3>
       {questionData.map((question) => (
         <BlitzQuestionItemContainer
           key={question.id}

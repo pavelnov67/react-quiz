@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../ui.module.css'
 import BlitzQuestionsContainer from './BlitzQuestionsContainer'
@@ -8,6 +9,7 @@ import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   const [questionData, setQuestionData] = useState([])
   const [isActive, setIsActive] = useState(false)
+  const navigate = useNavigate()
 
   const fetchQuestionsData = async (id) => {
     try {
@@ -45,6 +47,10 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
     setIsActive(!isActive)
   }
 
+  const handleAddQuestion = () => {
+    navigate('/blitz_add_question')
+  }
+
   return (
     <div className={styles.blitz_container}>
       <ToastContainer position="bottom-right" autoClose={2000} />
@@ -54,6 +60,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
             questionData={questionData}
             reFetchQuestions={fetchQuestionsData}
             themeId={id}
+            title={title}
           />
         ) : (
           <div className={styles.theme_item_container}>
@@ -83,13 +90,22 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
         )}
       </div>
       {isActive ? (
-        <button
-          className={styles.start_quiz_btn}
-          type="button"
-          onClick={handleIsActive}
-        >
-          Назад к теме
-        </button>
+        <div className={styles.theme_item_btns_container}>
+          <button
+            className={styles.start_quiz_btn}
+            type="button"
+            onClick={handleAddQuestion}
+          >
+            Добавить вопрос
+          </button>
+          <button
+            className={styles.start_quiz_btn}
+            type="button"
+            onClick={handleIsActive}
+          >
+            Назад к теме
+          </button>
+        </div>
       ) : (
         ''
       )}
