@@ -40,7 +40,10 @@ const QuestionItem = ({ id, title, answers, reFetch }) => {
 
   return (
     <div>
-      <ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
       {show ? (
         <div>
           <br></br>
@@ -62,13 +65,20 @@ const QuestionItem = ({ id, title, answers, reFetch }) => {
           </div>
           <div className={styles.answer_container}>
             {answers.map((answer) => (
-              <div className={styles.answers} key={answer.id}>
+              <div
+                className={styles.answers}
+                key={answer.id}
+              >
                 <h3>{answer.title}</h3>
                 <h3>{answer.score}</h3>
               </div>
             ))}
           </div>
-          <button type="button" onClick={showing} className={styles.delete_btn}>
+          <button
+            type="button"
+            onClick={showing}
+            className={styles.delete_btn}
+          >
             Удалить
           </button>
         </>

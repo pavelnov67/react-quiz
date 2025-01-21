@@ -34,6 +34,8 @@ const Auth = () => {
       } catch (err) {
         if (err.status === 403) {
           setError('Неверные логин или пароль')
+        } else {
+          setError(err.message)
         }
       }
     } else {

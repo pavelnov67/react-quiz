@@ -27,12 +27,12 @@ const PopUp = ({ show, onCancel, onClose, deleteData, id }) => {
       document.removeEventListener('mousedown', closeModalOnEscKeyDown)
     }
   }, [show])
-  /*useEffect(() => {
+  useEffect(() => {
     document.body.addEventListener('mousedown', closeModalOnClickOut)
     return () => {
       document.body.removeEventListener('mousedown', closeModalOnClickOut)
     }
-  }, [show])*/
+  }, [show])
 
   const onCancelClicked = () => {
     if (onClose) onClose()
@@ -47,16 +47,25 @@ const PopUp = ({ show, onCancel, onClose, deleteData, id }) => {
   if (show) {
     return (
       <div className={styles.modal_backdrop}>
-        <div ref={modalRef} className={styles.modal_content}>
+        <div
+          ref={modalRef}
+          className={styles.modal_content}
+        >
           <div className={styles.body}>
             <h3>Удалить вопрос № {id}?</h3>
           </div>
           <div className={styles.footer}>
-            <button onClick={onCancelClicked} className={styles.text_btn}>
-              Отмена
-            </button>
-            <button onClick={onConfirmClicked} className={styles.flat_btn}>
+            <button
+              onClick={onConfirmClicked}
+              className={styles.flat_btn}
+            >
               Удалить
+            </button>
+            <button
+              onClick={onCancelClicked}
+              className={styles.text_btn}
+            >
+              Отмена
             </button>
           </div>
         </div>

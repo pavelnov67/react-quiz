@@ -52,7 +52,10 @@ const Menu = () => {
 
   return (
     <div className={styles.menu_container}>
-      <ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
       <header>
         <div className={styles.header_main_container}>
           <h2>Страница администратора</h2>
@@ -87,7 +90,10 @@ const Menu = () => {
           <ul>
             <h3>Меню игры сто к одному</h3>
             <li>
-              <Link to="quiz" className={styles.anchor_btn_container}>
+              <Link
+                to="questions_list"
+                className={styles.anchor_btn_container}
+              >
                 <div className={styles.side_icon}>
                   <CiViewList />
                 </div>
@@ -106,7 +112,10 @@ const Menu = () => {
               </Link>
             </li>
             <li>
-              <Link to="active_games" className={styles.anchor_btn_container}>
+              <Link
+                to="active_games"
+                className={styles.anchor_btn_container}
+              >
                 <div className={styles.side_icon}>
                   <SlGameController />
                 </div>
@@ -150,7 +159,10 @@ const Menu = () => {
             </li>
             <h3>Меню чатов</h3>
             <li>
-              <Link to="conversations" className={styles.anchor_btn_container}>
+              <Link
+                to="conversations"
+                className={styles.anchor_btn_container}
+              >
                 <div className={styles.side_icon}>
                   <CiViewList />
                 </div>
