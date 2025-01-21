@@ -112,8 +112,13 @@
   margin: 10px;
   border: none;
 }
-.delete_btn:hover {
+.delete_btn:hover,
+.flat_btn:hover {
   background-color: #db5b5b;
+}
+
+.flat_btn {
+  height: 2.3em;
 }
 
 .hidden {

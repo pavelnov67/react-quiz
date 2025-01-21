@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../adminPage/adminPage.module.css'
 
-const BlitzAddQuestion = ({ div, themeNumber }) => {
+const BlitzAddQuestion = ({ dropDownList, themeNumber }) => {
   const [title, setTitle] = useState('')
   const [answer, setAnswer] = useState('')
   const initialState = () => {
@@ -38,11 +38,17 @@ const BlitzAddQuestion = ({ div, themeNumber }) => {
   return (
     <div className={styles.adminFormContainer}>
       <h3 className={styles.head_name}>Меню игры блиц</h3>
-      <ToastContainer position="bottom-right" autoClose={2000} />
-      <form className={styles.adminForm} onSubmit={handlePostQuestion}>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
+      <form
+        className={styles.adminForm}
+        onSubmit={handlePostQuestion}
+      >
         <h1>Форма добавления вопроса</h1>
         <hr />
-        {div()}
+        {dropDownList()}
         <div className={styles.inputContainer}>
           <label>Текст вопроса</label>
           <input

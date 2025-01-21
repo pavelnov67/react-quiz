@@ -28,7 +28,7 @@ const BlitzFetchThemeContainer = () => {
     label: data.title,
   }))
 
-  const div = () => {
+  const dropDownList = () => {
     return (
       <Select
         className={styles.dropDown_list}
@@ -42,15 +42,20 @@ const BlitzFetchThemeContainer = () => {
 
   const id = numbersArr.map((theme) => {
     if (selectedOption.value === theme.title) return theme.id
+    return null
   })
 
   const themeNumber = id.find((i) => {
     if (i) return i
+    return null
   })
 
   return (
     <div>
-      <BlitzAddQuestion themeNumber={themeNumber} div={div} />
+      <BlitzAddQuestion
+        themeNumber={themeNumber}
+        dropDownList={dropDownList}
+      />
     </div>
   )
 }
