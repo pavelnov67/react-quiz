@@ -85,96 +85,98 @@ const Menu = () => {
           )}
         </div>
       </header>
-      <div className={styles.side_container}>
-        <div className={styles.sidebar}>
-          <ul>
-            <h3>Меню игры сто к одному</h3>
-            <li>
-              <Link
-                to="questions_list"
-                className={styles.anchor_btn_container}
-              >
-                <div className={styles.side_icon}>
-                  <CiViewList />
-                </div>
-                <button className={styles.anchor_btn}>Список вопросов</button>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="add_question_page"
-                className={styles.anchor_btn_container}
-              >
-                <div className={styles.side_icon}>
-                  <BiAddToQueue />
-                </div>
-                <button className={styles.anchor_btn}>Добавить вопрос</button>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="active_games"
-                className={styles.anchor_btn_container}
-              >
-                <div className={styles.side_icon}>
-                  <SlGameController />
-                </div>
-                <button className={styles.anchor_btn}>Активные игры</button>
-              </Link>
-            </li>
-            <br></br>
-            <h3>Меню игры блиц</h3>
-            <li>
-              <Link
-                to="blitz_themes_container"
-                className={styles.anchor_btn_container}
-              >
-                <div className={styles.side_icon}>
-                  <CiViewList />
-                </div>
-                <button className={styles.anchor_btn}>Списоок тем</button>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="blitz_add_theme"
-                className={styles.anchor_btn_container}
-              >
-                <div className={styles.side_icon}>
-                  <BiAddToQueue />
-                </div>
-                <button className={styles.anchor_btn}>Добавить тему</button>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="blitz_add_question"
-                className={styles.anchor_btn_container}
-              >
-                <div className={styles.side_icon}>
-                  <CiCircleQuestion />
-                </div>
-                <button className={styles.anchor_btn}>Добавить вопрос</button>
-              </Link>
-            </li>
-            <h3>Меню чатов</h3>
-            <li>
-              <Link
-                to="conversations"
-                className={styles.anchor_btn_container}
-              >
-                <div className={styles.side_icon}>
-                  <CiViewList />
-                </div>
-                <button className={styles.anchor_btn}>Чаты</button>
-              </Link>
-            </li>
-          </ul>
+      {userName && (
+        <div className={styles.side_container}>
+          <div className={styles.sidebar}>
+            <ul>
+              <h3>Меню игры сто к одному</h3>
+              <li>
+                <Link
+                  to="questions_list"
+                  className={styles.anchor_btn_container}
+                >
+                  <div className={styles.side_icon}>
+                    <CiViewList />
+                  </div>
+                  <button className={styles.anchor_btn}>Список вопросов</button>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="add_question_page"
+                  className={styles.anchor_btn_container}
+                >
+                  <div className={styles.side_icon}>
+                    <BiAddToQueue />
+                  </div>
+                  <button className={styles.anchor_btn}>Добавить вопрос</button>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="active_games"
+                  className={styles.anchor_btn_container}
+                >
+                  <div className={styles.side_icon}>
+                    <SlGameController />
+                  </div>
+                  <button className={styles.anchor_btn}>Активные игры</button>
+                </Link>
+              </li>
+              <br></br>
+              <h3>Меню игры блиц</h3>
+              <li>
+                <Link
+                  to="blitz_themes_container"
+                  className={styles.anchor_btn_container}
+                >
+                  <div className={styles.side_icon}>
+                    <CiViewList />
+                  </div>
+                  <button className={styles.anchor_btn}>Списоок тем</button>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="blitz_add_theme"
+                  className={styles.anchor_btn_container}
+                >
+                  <div className={styles.side_icon}>
+                    <BiAddToQueue />
+                  </div>
+                  <button className={styles.anchor_btn}>Добавить тему</button>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="blitz_add_question"
+                  className={styles.anchor_btn_container}
+                >
+                  <div className={styles.side_icon}>
+                    <CiCircleQuestion />
+                  </div>
+                  <button className={styles.anchor_btn}>Добавить вопрос</button>
+                </Link>
+              </li>
+              <h3>Меню чатов</h3>
+              <li>
+                <Link
+                  to="conversations"
+                  className={styles.anchor_btn_container}
+                >
+                  <div className={styles.side_icon}>
+                    <CiViewList />
+                  </div>
+                  <button className={styles.anchor_btn}>Чаты</button>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className={styles.content}>
+            <Outlet />
+          </div>
         </div>
-        <div className={styles.content}>
-          <Outlet />
-        </div>
-      </div>
+      )}
     </div>
   )
 }
