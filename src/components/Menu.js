@@ -21,7 +21,6 @@ const Menu = () => {
         const userData = await axios.get(`${base_URL}/admin.current`)
         setUserName(userData.data.data.email)
       } catch (err) {
-        console.log(err)
         toast.error('Требуется авторизация')
       }
     }
@@ -58,35 +57,69 @@ const Menu = () => {
       />
       <header>
         <div className={styles.header_main_container}>
-          <h2>Страница администратора</h2>
           {userName ? (
-            <div className={styles.admin_icon_menu}>
-              <RiAdminLine />
-              <h4>{userName}</h4>
-              <button
-                className={styles.logOut_btn}
-                type="button"
-                onClick={handleLogOut}
-              >
-                Выход
-              </button>
+            <div className={styles.header_main_menu}>
+              <h2>
+                Администратор <u>{userName}</u>
+              </h2>
+              <div className={styles.admin_header_btn}>
+                <button
+                  className={styles.logOut_btn}
+                  type="button"
+                  onClick={handleLogOut}
+                >
+                  Выход
+                </button>
+              </div>
+              <div className={styles.header_main_menu_list}>
+                <Link
+                  to="blitz"
+                  className={styles.anchor_btn_container}
+                >
+                  <button className={styles.anchor_btn}>Блиц</button>
+                </Link>
+                <Link
+                  to="100-1"
+                  className={styles.anchor_btn_container}
+                >
+                  <button className={styles.anchor_btn}>100-1</button>
+                </Link>
+                <Link
+                  to="group-control"
+                  className={styles.anchor_btn_container}
+                >
+                  <button className={styles.anchor_btn}>
+                    Управление группой
+                  </button>
+                </Link>
+              </div>
             </div>
           ) : (
             <div className={styles.header_main_container}>
+              <h2>Страница администратора</h2>
               <p>Требуется авторизация</p>
-              <button
-                className={styles.login_btn}
-                type="button"
-                onClick={handleLogin}
-              >
-                Войти
-              </button>
+              <div className={styles.admin_icon_menu}>
+                <button
+                  className={styles.login_btn}
+                  type="button"
+                  onClick={handleLogin}
+                >
+                  Войти
+                </button>
+              </div>
             </div>
           )}
         </div>
       </header>
-      {userName && (
-        <div className={styles.side_container}>
+      {userName && <Outlet />}
+    </div>
+  )
+}
+
+export default Menu
+
+/*
+ 
           <div className={styles.sidebar}>
             <ul>
               <h3>Меню игры сто к одному</h3>
@@ -172,13 +205,5 @@ const Menu = () => {
               </li>
             </ul>
           </div>
-          <div className={styles.content}>
-            <Outlet />
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
 
-export default Menu
+*/

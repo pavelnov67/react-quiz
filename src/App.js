@@ -10,6 +10,9 @@ import BlitzFetchThemeContainer from './components/UI/game/blitz/BlitzFetchTheme
 import ConversationsContainer from './components/UI/game/conversations/ConversationsContainer'
 import NotFound from './components/NotFound'
 import './App.css'
+import Blitz from './components/UI/game/blitz/Blitz'
+import Quiz from './components/UI/game/100-1/GetQuestions'
+import GrouoControl from './components/UI/game/group control/GroupControl'
 
 function App() {
   return (
@@ -24,29 +27,42 @@ function App() {
           element={<MainLayout />}
         >
           <Route
-            path="questions_list"
-            element={<GetQuestions />}
-          />
+            path="blitz"
+            element={<Blitz />}
+          >
+            <Route
+              path="blitz_add_theme"
+              element={<BlitzAddTheme />}
+            />
+            <Route
+              path="blitz_add_question"
+              element={<BlitzFetchThemeContainer />}
+            />
+            <Route
+              path="blitz_themes_container"
+              element={<BlitzThemesContainer />}
+            />
+          </Route>
+
           <Route
-            path="active_games"
-            element={<ActiveGames />}
-          />
+            path="100-1"
+            element={<Quiz />}
+          >
+            <Route
+              path="active_games"
+              element={<ActiveGames />}
+            />
+            <Route
+              path="add_question_page"
+              element={<AddQuestionPage />}
+            />
+          </Route>
+
           <Route
-            path="add_question_page"
-            element={<AddQuestionPage />}
+            path="group-control"
+            element={<GrouoControl />}
           />
-          <Route
-            path="blitz_themes_container"
-            element={<BlitzThemesContainer />}
-          />
-          <Route
-            path="blitz_add_theme"
-            element={<BlitzAddTheme />}
-          />
-          <Route
-            path="blitz_add_question"
-            element={<BlitzFetchThemeContainer />}
-          />
+
           <Route
             path="conversations"
             element={<ConversationsContainer />}

@@ -13,7 +13,9 @@ header {
   margin-bottom: 15px;
 }
 
-.header_main_container {
+.header_main_container,
+.header_main_menu {
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -22,12 +24,15 @@ header {
   color: rgba(255, 0, 0, 0.767);
 }
 
-.admin_icon_menu {
+.header_main_container h2 {
+  margin-top: 10px;
+}
+
+.admin_header_btn {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  padding: 10px;
+  justify-content: end;
 }
 
 .admin_icon_menu h4 p {
@@ -52,6 +57,41 @@ header {
 }
 .logOut_btn:hover {
   background-color: #a71616;
+}
+
+.header_main_menu_list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.anchor_btn {
+  width: 13em;
+  font-size: 18px;
+  text-decoration: none;
+  color: #ffffff;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.103);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.anchor_btn:hover {
+  background-color: rgba(255, 255, 255, 0.473);
+}
+
+.anchor_btn:focus {
+  background-color: rgba(255, 255, 255, 0.473);
+}
+
+@media (max-width: 770px) {
+  .header_main_menu_list {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .side_container {
@@ -108,33 +148,6 @@ header {
   color: #fff;
   width: 30px;
   height: 30px;
-}
-
-.anchor_btn {
-  font-size: 18px;
-  text-decoration: none;
-  color: #ffffff;
-  text-align: start;
-  border: none;
-  background-color: rgba(255, 255, 255, 0);
-  padding: 10px;
-}
-
-.anchor_btn:hover {
-  background-color: #ffffff00;
-}
-
-@media (max-width: 770px) {
-  .anchor_btn {
-    font-size: 12px;
-    padding: 4px;
-  }
-}
-
-.content {
-  border: 1px solid rgba(245, 222, 179, 0);
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.027);
 }
 
 @media (max-width: 770px) {

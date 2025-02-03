@@ -3,7 +3,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { base_URL } from '../../../variables/vars'
-import styles from '../../ui.module.css'
+import styles from './blitz.module.css'
 import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 
 const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
@@ -53,7 +53,10 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
 
   return (
     <div className={styles.blitz_container}>
-      <ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
       <div className={styles.blitz_container}>
         {isActive ? (
           <BlitzQuestionsContainer
@@ -71,11 +74,11 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
               <p>Описание: {description}</p>
               <div className={styles.theme_item_btns_container}>
                 <button
-                  className={styles.show_questions_btn}
+                  className={styles.edit_btn}
                   type="button"
                   onClick={() => fetchQuestionsData(id)}
                 >
-                  Показать вопросы
+                  Редактировать
                 </button>
                 <button
                   className={styles.delete_btn}

@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../ui.module.css'
 import BlitzThemeItemContainer from './BlitzThemeItemContainer'
+import BlitzAddTheme from './BlitzAddTheme'
 
 const BlitzThemesContainer = () => {
   const [themesData, setThemesData] = useState([])
@@ -23,8 +24,10 @@ const BlitzThemesContainer = () => {
 
   return (
     <div className={styles.blitz_container}>
-      <h3 className={styles.head_name}>Меню игры блиц</h3>
-      <ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+      />
       {themesData.map((theme) => (
         <BlitzThemeItemContainer
           key={theme.id}
@@ -32,6 +35,8 @@ const BlitzThemesContainer = () => {
           reFetchThemes={setReFetchThemes}
         />
       ))}
+      <hr />
+      <BlitzAddTheme />
     </div>
   )
 }
