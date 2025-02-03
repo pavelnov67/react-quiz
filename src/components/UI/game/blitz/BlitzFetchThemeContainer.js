@@ -11,6 +11,7 @@ import styles from '../../adminPage/adminPage.module.css'
 const BlitzFetchThemeContainer = () => {
   const [numbersArr, setNumbersArr] = useState([])
   const [selectedOption, setSelectedOption] = useState([])
+
   useEffect(() => {
     const fetchThemeNumbers = async () => {
       try {
