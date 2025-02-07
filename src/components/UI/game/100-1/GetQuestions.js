@@ -1,50 +1,41 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux'
 import QuestionList from './QuestionList'
-import { base_URL } from '../../../variables/vars'
-import styles from '../../ui.module.css'
-
-const url_APIGet = `${base_URL}/game/quiz.questions_list?theme_id=1`
+import { fetchQuizQuestions } from '../../../redux/store/actionCreators/actionCreators'
 
 const Quiz = () => {
-  const [questionsData, setQuestionsData] = useState([])
+  const { quizQuestions, isLoading, error } = useSelector(
+    (state) => state.quizQuestionsReducer
+  )
+  const dispatch = useDispatch()
   const [click, setClick] = useState(0)
 
-  const handleClick = async () => {
-    try {
-      const data = await axios.get(
-        url_APIGet,
-        { withCredentials: true },
-        { crossDomain: true }
-      )
-      setQuestionsData(data.data.data.questions)
-    } catch (err) {
-      console.log(err)
-      toast.error(err.message)
-    }
-  }
-
   useEffect(() => {
-    handleClick()
+    dispatch(fetchQuizQuestions())
   }, [click])
 
   const handleClickToFetch = () => {
     setClick((prev) => prev + 1)
   }
 
-  return (
-    <>
-      <h3 className={styles.head_name}>Меню игры сто к одному</h3>
-      <ToastContainer position="bottom-right" autoClose={2000} />
-      <div>
-        <QuestionList
-          reFetch={handleClickToFetch}
-          questionsData={questionsData}
-        />
-      </div>
-    </>
-  )
+  if (error) {
+    return <h3>{error}</h3>
+  } else {
+    return (
+      <>
+        {isLoading ? (
+          <h3>Loading...</h3>
+        ) : (
+          <div>
+            <QuestionList
+              reFetch={handleClickToFetch}
+              questionsData={quizQuestions}
+            />
+          </div>
+        )}
+      </>
+    )
+  }
 }
 
 export default Quiz

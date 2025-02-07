@@ -1,18 +1,18 @@
 import { createSlice, createAction } from '@reduxjs/toolkit'
-import { fetchThemes } from '../actionCreators/actionCreators'
+import { fetchQuizQuestions } from '../actionCreators/actionCreators'
 
-const fulfilled = createAction(fetchThemes.fulfilled)
-const pending = createAction(fetchThemes.pending)
-const rejected = createAction(fetchThemes.rejected)
+const fulfilled = createAction(fetchQuizQuestions.fulfilled)
+const pending = createAction(fetchQuizQuestions.pending)
+const rejected = createAction(fetchQuizQuestions.rejected)
 
 const initialState = {
-  themes: [],
+  quizQuestions: [],
   isLoading: false,
   error: '',
 }
 
-export const blitzThemeSlice = createSlice({
-  name: 'theme',
+export const quizQuestionsSlice = createSlice({
+  name: 'quizQuestions',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -20,7 +20,7 @@ export const blitzThemeSlice = createSlice({
       .addCase(fulfilled, (state, action) => {
         state.isLoading = false
         state.error = ''
-        state.themes = action.payload
+        state.quizQuestions = action.payload
       })
       .addCase(pending, (state) => {
         state.isLoading = true
@@ -32,4 +32,4 @@ export const blitzThemeSlice = createSlice({
   },
 })
 
-export default blitzThemeSlice.reducer
+export default quizQuestionsSlice.reducer
