@@ -2,6 +2,8 @@ import { useState } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { fetchThemes } from '../../../redux/store/actionCreators/actionCreators'
 import { base_URL } from '../../../variables/vars'
 import styles from './blitz.module.css'
 import BlitzQuestionsContainer from './BlitzQuestionsContainer'
@@ -10,6 +12,8 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   const [questionData, setQuestionData] = useState([])
   const [isActive, setIsActive] = useState(false)
   const navigate = useNavigate()
+
+  const dispatch = useDispatch()
 
   const fetchQuestionsData = async (id) => {
     try {
@@ -36,7 +40,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
       await instance.delete(
         `${base_URL}/game/blitz.themes_delete_by_id?theme_id=${id}`
       )
-      reFetchThemes((i) => i++)
+      dispatch(fetchThemes())
     } catch (err) {
       console.log(err)
       toast.error(err.message)

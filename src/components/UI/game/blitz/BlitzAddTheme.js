@@ -1,10 +1,13 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
 import { ToastContainer, toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { fetchThemes } from '../../../redux/store/actionCreators/actionCreators'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../adminPage/adminPage.module.css'
 
 const BlitzAddTheme = () => {
+  const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
       title: '',
@@ -23,6 +26,7 @@ const BlitzAddTheme = () => {
         resetForm({})
         setStatus({ success: true })
         toast.info('Тема добавлена успешно!')
+        dispatch(fetchThemes())
       } catch (err) {
         setStatus({ success: false })
         if (err.status === 400) {

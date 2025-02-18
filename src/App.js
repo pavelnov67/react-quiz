@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import Auth from './components/authorization/Auth'
 import MainLayout from './components/MainLayout'
-import GetQuestions from './components/UI/game/100-1/GetQuestions'
 import AddQuestionPage from './components/UI/game/100-1/AddQuestionPage'
 import ActiveGames from './components/UI/game/100-1/ActiveGames'
 import BlitzThemesContainer from './components/UI/game/blitz/BlitzThemesContainer'

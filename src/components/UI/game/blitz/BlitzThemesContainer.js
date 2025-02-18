@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import styles from '../../ui.module.css'
 import BlitzThemeItemContainer from './BlitzThemeItemContainer'
 import BlitzAddTheme from './BlitzAddTheme'
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchThemes } from '../../../redux/store/actionCreators/actionCreators'
 
 const BlitzThemesContainer = () => {
-  const [reFetchThemes, setReFetchThemes] = useState(null)
+  const [reFetchThemes, setReFetchThemes] = useState(0)
   const { themes, isLoading, error } = useSelector(
     (state) => state.themeReducer
   )
@@ -39,7 +39,7 @@ const BlitzThemesContainer = () => {
               />
             ))}
             <hr />
-            <BlitzAddTheme />
+            <BlitzAddTheme reFetchThemes={setReFetchThemes} />
           </>
         )}
       </div>
