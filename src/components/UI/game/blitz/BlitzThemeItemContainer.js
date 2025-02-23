@@ -1,31 +1,42 @@
-import { useState } from 'react'
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
-import { useDispatch } from 'react-redux'
-import { fetchThemes } from '../../../redux/store/actionCreators/actionCreators'
-import { base_URL } from '../../../variables/vars'
-import styles from './blitz.module.css'
-import BlitzQuestionsContainer from './BlitzQuestionsContainer'
+import { useState } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { fetchThemes } from '../../../redux/store/actionCreators/actionCreators';
+import { base_URL } from '../../../variables/vars';
+import styles from './blitz.module.css';
+import BlitzQuestionsContainer from './BlitzQuestionsContainer';
 
 const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
-  const [questionData, setQuestionData] = useState([])
-  const [isActive, setIsActive] = useState(false)
+  const [questionData, setQuestionData] = useState([]);
+  const [isActive, setIsActive] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const limit = 10; // Количество вопросов на странице
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const fetchQuestionsData = async (id) => {
+  const fetchQuestionsData = async (id, page = 1) => {
+    const offset = (page - 1) * limit;
     try {
-      const data = await axios.get(
-        `${base_URL}/game/blitz.questions_list?theme_id=${id}`
-      )
-      setQuestionData(data.data.data.questions)
-      setIsActive(!isActive)
+      const data = await axios.get(`${base_URL}/game/blitz.questions_list`, {
+        params: {
+          theme_id: id,
+          limit: limit,
+          offset: offset,
+        },
+      });
+      setQuestionData(data.data.data.questions);
+      setTotalPages(Math.ceil(data.data.data.total / limit));
+      setIsActive(!isActive);
     } catch (err) {
-      if (err.status === 404) {
-        toast.error('В данной теме нет вопросов')
-      } else toast.error(err.message)
+      if (err.response?.status === 404) {
+        toast.error('В данной теме нет вопросов');
+      } else {
+        toast.error(err.message);
+      }
     }
-  }
+  };
 
   const handleDelete = async (id) => {
     const instance = axios.create({
@@ -33,36 +44,57 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
       headers: {
         accept: 'application/json',
       },
-    })
+    });
     try {
       await instance.delete(
         `${base_URL}/game/blitz.themes_delete_by_id?theme_id=${id}`
-      )
-      dispatch(fetchThemes())
+      );
+      dispatch(fetchThemes());
     } catch (err) {
-      console.log(err)
-      toast.error(err.message)
+      console.log(err);
+      toast.error(err.message);
     }
-  }
+  };
 
   const handleIsActive = (id) => {
-    setIsActive(!isActive)
-  }
+    setIsActive(!isActive);
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    fetchQuestionsData(id, newPage);
+  };
 
   return (
     <div className={styles.blitz_container}>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-      />
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <div className={styles.blitz_container}>
         {isActive ? (
-          <BlitzQuestionsContainer
-            questionData={questionData}
-            reFetchQuestions={fetchQuestionsData}
-            themeId={id}
-            title={title}
-          />
+          <>
+            <BlitzQuestionsContainer
+              questionData={questionData}
+              reFetchQuestions={() => fetchQuestionsData(id, currentPage)}
+              themeId={id}
+              title={title}
+            />
+            <div className={styles.pagination}>
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                Назад
+              </button>
+              <span>
+                Страница {currentPage} из {totalPages}
+              </span>
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                Вперед
+              </button>
+            </div>
+          </>
         ) : (
           <div className={styles.theme_item_container}>
             <div className={styles.blitz_theme_container}>
@@ -102,7 +134,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default BlitzThemeItemContainer
+export default BlitzThemeItemContainer;
