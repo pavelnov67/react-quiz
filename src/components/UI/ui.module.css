@@ -189,3 +189,30 @@
     height: 30px;
   }
 }
+
+.paginate_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+
+.paginate_container li {
+  list-style: none;
+}
+
+.paginate_btn {
+  font-size: 18px;
+  background-color: #94bd0200;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+}
+.paginate_btn:hover {
+  background-color: #ffffff33;
+}
+.paginate_btn:checked {
+  background-color: #ffffff33;
+}
