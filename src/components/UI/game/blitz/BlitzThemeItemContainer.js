@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { fetchThemes } from '../../../redux/store/actionCreators/actionCreators'
 import { base_URL } from '../../../variables/vars'
@@ -11,7 +10,6 @@ import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   const [questionData, setQuestionData] = useState([])
   const [isActive, setIsActive] = useState(false)
-  const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
@@ -49,10 +47,6 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
 
   const handleIsActive = (id) => {
     setIsActive(!isActive)
-  }
-
-  const handleAddQuestion = () => {
-    navigate('/blitz_add_question')
   }
 
   return (
@@ -96,25 +90,16 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
           </div>
         )}
       </div>
-      {isActive ? (
+      {isActive && (
         <div className={styles.theme_item_btns_container}>
-          <button
-            className={styles.start_quiz_btn}
-            type="button"
-            onClick={handleAddQuestion}
-          >
-            Добавить вопрос
-          </button>
           <button
             className={styles.start_quiz_btn}
             type="button"
             onClick={handleIsActive}
           >
-            Назад к теме
+            Назад к темам
           </button>
         </div>
-      ) : (
-        ''
       )}
     </div>
   )

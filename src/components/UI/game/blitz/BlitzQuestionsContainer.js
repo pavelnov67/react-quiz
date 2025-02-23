@@ -1,4 +1,5 @@
 import BlitzQuestionItemContainer from './BlitzQuestionItemContainer'
+import BlitzAddQuestion from './BlitzAddQuestion'
 import styles from '../../ui.module.css'
 
 const BlitzQuestionsContainer = ({
@@ -20,6 +21,7 @@ const BlitzQuestionsContainer = ({
           themeId={themeId}
         />
       ))}
+      <BlitzAddQuestion themeId={themeId} />
     </div>
   )
 }
