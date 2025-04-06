@@ -1,23 +1,66 @@
-import React from 'react'
+import { useCallback, useContext } from 'react'
 import styles from '../ui.module.css'
+import { OffsetContext } from '../game/blitz/BlitzThemeItemContainer'
 
-const Pagination = ({ page, count, paginate }) => {
-  const pageNums = []
+const Pagination = ({ page, paginate }) => {
+  const offsetContext = useContext(OffsetContext)
 
-  for (let i = 1; i <= Math.ceil(count / 5); i++) {
-    pageNums.push(i)
+  const handleClick = () => {
+    return offsetContext.offset === undefined ? 5 : offsetContext.offset + 5
   }
+
+  console.log(handleClick())
 
   return (
     <div className={styles.paginate_container}>
-      {pageNums.length > 1 &&
-        pageNums.map((num) => (
-          <li key={num}>
-            <button className={styles.paginate_btn}>{num}</button>
-          </li>
-        ))}
+      <button
+        className={styles.paginate_btn}
+        onClick={() => paginate(page - 1)}
+      >
+        Назад
+      </button>
+      <h4> {page}</h4>
+      {page < 2 && (
+        <button
+          className={styles.paginate_btn}
+          onClick={() => paginate(page + 1, handleClick())}
+        >
+          Вперёд
+        </button>
+      )}
     </div>
   )
 }
 
 export default Pagination
+
+/*
+
+            <div className={styles.pagination}>
+              <button
+                onClick={() =>
+                  handlePageChange(currentPage - 1, offset - limit)
+                }
+                disabled={currentPage === 1}
+              >
+                Назад
+              </button>
+              <span>Страница {currentPage}</span>
+              <button
+                onClick={() =>
+                  handlePageChange(currentPage + 1, offset + limit)
+                }
+              >
+                Вперед
+              </button>
+            </div>
+
+
+              const pageNums = []
+
+  for (let i = 1; i <= Math.ceil(7 / limit); i++) {
+    pageNums.push(i)
+  }
+  console.log(pageNums)
+
+*/

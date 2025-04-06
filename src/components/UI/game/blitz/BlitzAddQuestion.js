@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import { base_URL } from '../../../variables/vars'
 import styles from '../../adminPage/adminPage.module.css'
 
-const BlitzAddQuestion = ({ themeID }) => {
+const BlitzAddQuestion = ({ id }) => {
   const [title, setTitle] = useState('')
   const [answer, setAnswer] = useState('')
   const initialState = () => {
@@ -25,7 +25,7 @@ const BlitzAddQuestion = ({ themeID }) => {
       const body = {
         title,
         answer,
-        theme_id: themeID,
+        theme_id: id,
       }
       await instance.post(`${base_URL}/game/blitz.questions_add`, body)
       toast.info('Вопрос добавлен успешно!')
