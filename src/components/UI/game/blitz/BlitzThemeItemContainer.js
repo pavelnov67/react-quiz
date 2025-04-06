@@ -149,6 +149,17 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
             </button>
           </div>
         )}
+        {isActive && (
+          <div className={styles.theme_item_btns_container}>
+            <button
+              className={styles.start_quiz_btn}
+              type="button"
+              onClick={handleIsActive}
+            >
+              Назад к темам
+            </button>
+          </div>
+        )}
       </div>
     </OffsetContext.Provider>
   )
