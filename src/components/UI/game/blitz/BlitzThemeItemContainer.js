@@ -18,9 +18,9 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   const [questionData, setQuestionData] = useState([])
   const [isActive, setIsActive] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
-  const limit = 5 // Количество вопросов на странице
-  const [offset, setOffset] = useState(undefined)
+  const [questionsCount, setQuestionsCount] = useState(null)
+  const dataLimit = 5 // Количество вопросов на странице
+  const [offset, setOffset] = useState(0)
 
   const dispatch = useDispatch()
 
@@ -33,9 +33,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
         },
       }
     )
-    setTotalPages(
-      Math.floor(fetchQuestionsCount.data.data.questions_count / limit)
-    )
+    setQuestionsCount(fetchQuestionsCount.data.data.questions_count)
   }
 
   const fetchQuestionsData = async (id, newPage, offset) => {
@@ -44,7 +42,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
       const data = await axios.get(`${base_URL}/game/blitz.questions_list`, {
         params: {
           theme_id: id,
-          limit: limit,
+          limit: dataLimit,
           offset: offset,
         },
       })
@@ -88,10 +86,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   return (
     <OffsetContext.Provider value={{ offset, setOffset }}>
       <div className={styles.blitz_container}>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={2000}
-        />
+        <ToastContainer position="bottom-right" autoClose={2000} />
         <div className={styles.blitz_container}>
           {isActive ? (
             <>
@@ -102,10 +97,10 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
                 title={title}
               />
               <Pagination
-                limit={limit}
+                dataLimit={dataLimit}
+                questionsCount={questionsCount}
                 paginate={handlePageChange}
                 page={currentPage}
-                count={totalPages}
               />
             </>
           ) : (
@@ -138,17 +133,6 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
             </div>
           )}
         </div>
-        {isActive && (
-          <div className={styles.theme_item_btns_container}>
-            <button
-              className={styles.start_quiz_btn}
-              type="button"
-              onClick={handleIsActive}
-            >
-              Назад к темам
-            </button>
-          </div>
-        )}
         {isActive && (
           <div className={styles.theme_item_btns_container}>
             <button

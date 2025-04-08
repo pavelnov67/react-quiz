@@ -1,34 +1,75 @@
-import { useCallback, useContext } from 'react'
+import { useContext, useState } from 'react'
 import styles from '../ui.module.css'
 import { OffsetContext } from '../game/blitz/BlitzThemeItemContainer'
 
-const Pagination = ({ page, paginate }) => {
+const Pagination = ({
+  page,
+  paginate,
+  questionsCount,
+  data,
+  RenderComponent,
+  dataLimit,
+}) => {
   const offsetContext = useContext(OffsetContext)
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const handleClick = () => {
-    return offsetContext.offset === undefined ? 5 : offsetContext.offset + 5
+  const pages = Math.ceil(questionsCount / dataLimit)
+
+  function goToNextPage() {
+    setCurrentPage((currentPage) => currentPage + 1)
+    let newOffset =
+      offsetContext.offset === 0
+        ? dataLimit
+        : (offsetContext.offset += dataLimit)
+    paginate(currentPage, newOffset)
   }
 
-  console.log(handleClick())
+  function goToPreviousPage() {
+    setCurrentPage((currentPage) => currentPage - 1)
+    let newOffset = offsetContext.offset - dataLimit
+    if (newOffset < 1) newOffset = undefined
+    paginate(currentPage, newOffset)
+  }
 
+  function changePage(event) {
+    const pageNumber = Number(event.target.textContent)
+    setCurrentPage(pageNumber)
+  }
+
+  const getPaginatedData = () => {}
+
+  const getPaginationGroup = () => {}
+
+  const handleNextPage = () => {
+    return offsetContext.offset === undefined ? 5 : offsetContext.offset + 5
+  }
+  const handlePrevPage = () => {
+    return offsetContext.offset === undefined ? 5 : offsetContext.offset - 5
+  }
   return (
-    <div className={styles.paginate_container}>
-      <button
-        className={styles.paginate_btn}
-        onClick={() => paginate(page - 1)}
-      >
-        Назад
-      </button>
-      <h4> {page}</h4>
-      {page < 2 && (
-        <button
-          className={styles.paginate_btn}
-          onClick={() => paginate(page + 1, handleClick())}
-        >
-          Вперёд
-        </button>
+    <>
+      {dataLimit ? (
+        <div className={styles.paginate_container}>
+          {currentPage <= 1 ? (
+            <button className={styles.disabled_btn}>Назад</button>
+          ) : (
+            <button className={styles.paginate_btn} onClick={goToPreviousPage}>
+              Назад
+            </button>
+          )}
+          <h4> {currentPage}</h4>
+          {currentPage < pages ? (
+            <button className={styles.paginate_btn} onClick={goToNextPage}>
+              Вперёд
+            </button>
+          ) : (
+            <button className={styles.disabled_btn}>Вперёд</button>
+          )}
+        </div>
+      ) : (
+        <h4>Loading...</h4>
       )}
-    </div>
+    </>
   )
 }
 

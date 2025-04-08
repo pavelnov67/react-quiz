@@ -201,7 +201,8 @@
   list-style: none;
 }
 
-.paginate_btn {
+.paginate_btn,
+.disabled_btn {
   font-size: 18px;
   background-color: #94bd0200;
   color: #ffffff;
@@ -215,4 +216,9 @@
 }
 .paginate_btn:checked {
   background-color: #ffffff33;
+}
+
+.disabled_btn {
+  opacity: 0.5;
+  pointer-events: none;
 }
