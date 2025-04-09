@@ -27,45 +27,21 @@ const Pagination = ({ id, page, paginate, questionsCount, dataLimit }) => {
 
   useEffect(() => {
     paginate(id, offset)
-  }, [offset, setOffset])
+  }, [offset, setOffset, currentPage])
 
   const pages = Math.ceil(questionsCount / dataLimit)
-  /*
-  const goToNextPage = () => {
-    console.log('doing')
-    setCurrentPage((prev) => prev + 1)
-    setOffset((prev) => prev + dataLimit)
-
-    console.log(offset)
-    console.log(currentPage)
-    paginate(currentPage, offset)
-  }
-
-  console.log(offset)
-  console.log(currentPage)
-
-  function goToPreviousPage() {
-    setCurrentPage((currentPage) => currentPage - 1)
-    setOffset((prev) => prev - dataLimit)
-    paginate(currentPage, offset)
-  }*/
 
   function changePage(event) {
     const pageNumber = Number(event.target.textContent)
     setCurrentPage(pageNumber)
+    setOffset(() => pageNumber * dataLimit - dataLimit)
   }
 
   const getPaginationGroup = () => {
     let start = Math.floor((currentPage - 1) / pages) * pages
     return new Array(pages).fill().map((_, idx) => start + idx + 1)
   }
-  /*
-  const getPaginatedData = () => {
-    const startIndex = currentPage * dataLimit - dataLimit
-    const endIndex = startIndex + dataLimit
-    return data.slice(startIndex, endIndex)
-  }
-*/
+
   return (
     <>
       {dataLimit ? (
@@ -106,34 +82,3 @@ const Pagination = ({ id, page, paginate, questionsCount, dataLimit }) => {
 }
 
 export default Pagination
-
-/*
-
-            <div className={styles.pagination}>
-              <button
-                onClick={() =>
-                  handlePageChange(currentPage - 1, offset - limit)
-                }
-                disabled={currentPage === 1}
-              >
-                Назад
-              </button>
-              <span>Страница {currentPage}</span>
-              <button
-                onClick={() =>
-                  handlePageChange(currentPage + 1, offset + limit)
-                }
-              >
-                Вперед
-              </button>
-            </div>
-
-
-              const pageNums = []
-
-  for (let i = 1; i <= Math.ceil(7 / limit); i++) {
-    pageNums.push(i)
-  }
-  console.log(pageNums)
-
-*/
