@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import OffsetContext from '../game/blitz/context/OffsetContext'
 import styles from '../ui.module.css'
 

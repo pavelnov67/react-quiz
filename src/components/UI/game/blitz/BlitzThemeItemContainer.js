@@ -1,4 +1,4 @@
-import { useState, createContext, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
@@ -8,6 +8,7 @@ import styles from './blitz.module.css'
 import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 import Pagination from '../../UIcomponents/Pagination'
 import OffsetContext from './context/OffsetContext'
+import BlitzAddQuestion from './BlitzAddQuestion'
 
 const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   const [questionData, setQuestionData] = useState([])
@@ -31,7 +32,6 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   }
 
   const fetchQuestionsData = async (id, offset) => {
-    console.log(offset)
     fetchTotalQuestionsCount(id)
     try {
       const data = await axios.get(`${base_URL}/game/blitz.questions_list`, {
@@ -42,6 +42,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
         },
       })
       setQuestionData(data.data.data.questions)
+      window.scrollTo(0, 0)
     } catch (err) {
       if (err.response?.status === 404) {
         toast.error('В данной теме нет вопросов')
@@ -90,6 +91,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
               questionsCount={questionsCount}
               paginate={fetchQuestionsData}
             />
+            <BlitzAddQuestion id={id} />
           </>
         ) : (
           <div className={styles.theme_item_container}>
