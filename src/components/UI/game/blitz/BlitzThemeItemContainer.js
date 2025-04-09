@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react'
+import { useState, createContext, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
@@ -7,20 +7,14 @@ import { base_URL } from '../../../variables/vars'
 import styles from './blitz.module.css'
 import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 import Pagination from '../../UIcomponents/Pagination'
-
-export const OffsetContext = createContext({
-  offset: undefined,
-  setOffset: () => {},
-})
-export const useOffsetContext = () => useContext(OffsetContext)
+import OffsetContext from './context/OffsetContext'
 
 const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   const [questionData, setQuestionData] = useState([])
   const [isActive, setIsActive] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
   const [questionsCount, setQuestionsCount] = useState(null)
   const dataLimit = 5 // Количество вопросов на странице
-  const [offset, setOffset] = useState(0)
+  const { offset, setOffset } = useContext(OffsetContext)
 
   const dispatch = useDispatch()
 
@@ -36,7 +30,8 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
     setQuestionsCount(fetchQuestionsCount.data.data.questions_count)
   }
 
-  const fetchQuestionsData = async (id, newPage, offset) => {
+  const fetchQuestionsData = async (id, offset) => {
+    console.log(offset)
     fetchTotalQuestionsCount(id)
     try {
       const data = await axios.get(`${base_URL}/game/blitz.questions_list`, {
@@ -74,78 +69,70 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
     }
   }
 
-  const handleIsActive = (id) => {
+  const handleIsActive = () => {
     setIsActive(!isActive)
   }
 
-  const handlePageChange = (newPage, offset) => {
-    setCurrentPage(newPage)
-    fetchQuestionsData(id, newPage, offset)
-  }
-
   return (
-    <OffsetContext.Provider value={{ offset, setOffset }}>
+    <div className={styles.blitz_container}>
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <div className={styles.blitz_container}>
-        <ToastContainer position="bottom-right" autoClose={2000} />
-        <div className={styles.blitz_container}>
-          {isActive ? (
-            <>
-              <BlitzQuestionsContainer
-                questionData={questionData}
-                reFetchQuestions={() => fetchQuestionsData(id, currentPage)}
-                themeId={id}
-                title={title}
-              />
-              <Pagination
-                dataLimit={dataLimit}
-                questionsCount={questionsCount}
-                paginate={handlePageChange}
-                page={currentPage}
-              />
-            </>
-          ) : (
-            <div className={styles.theme_item_container}>
-              <div className={styles.blitz_theme_container}>
-                <h3>
-                  Тема №{id}: {title}
-                </h3>
-                <p>Описание: {description}</p>
-                <div className={styles.theme_item_btns_container}>
-                  <button
-                    className={styles.edit_btn}
-                    type="button"
-                    onClick={() => {
-                      fetchQuestionsData(id, currentPage)
-                      setIsActive(!isActive)
-                    }}
-                  >
-                    Редактировать
-                  </button>
-                  <button
-                    className={styles.delete_btn}
-                    type="button"
-                    onClick={() => handleDelete(id)}
-                  >
-                    Удалить тему
-                  </button>
-                </div>
+        {isActive ? (
+          <>
+            <BlitzQuestionsContainer
+              questionData={questionData}
+              themeId={id}
+              title={title}
+            />
+            <Pagination
+              id={id}
+              dataLimit={dataLimit}
+              questionsCount={questionsCount}
+              paginate={fetchQuestionsData}
+            />
+          </>
+        ) : (
+          <div className={styles.theme_item_container}>
+            <div className={styles.blitz_theme_container}>
+              <h3>
+                Тема №{id}: {title}
+              </h3>
+              <p>Описание: {description}</p>
+              <div className={styles.theme_item_btns_container}>
+                <button
+                  className={styles.edit_btn}
+                  type="button"
+                  onClick={() => {
+                    fetchQuestionsData(id)
+                    setIsActive(!isActive)
+                  }}
+                >
+                  Редактировать
+                </button>
+                <button
+                  className={styles.delete_btn}
+                  type="button"
+                  onClick={() => handleDelete(id)}
+                >
+                  Удалить тему
+                </button>
               </div>
             </div>
-          )}
-        </div>
-        {isActive && (
-          <div className={styles.theme_item_btns_container}>
-            <button
-              className={styles.start_quiz_btn}
-              type="button"
-              onClick={handleIsActive}
-            >
-              Назад к темам
-            </button>
           </div>
         )}
       </div>
-    </OffsetContext.Provider>
+      {isActive && (
+        <div className={styles.theme_item_btns_container}>
+          <button
+            className={styles.start_quiz_btn}
+            type="button"
+            onClick={() => handleIsActive(id)}
+          >
+            Назад к темам
+          </button>
+        </div>
+      )}
+    </div>
   )
 }
 

@@ -202,7 +202,9 @@
 }
 
 .paginate_btn,
-.disabled_btn {
+.disabled_btn,
+.paginate_item,
+.paginate_item_active {
   font-size: 18px;
   background-color: #94bd0200;
   color: #ffffff;
@@ -211,7 +213,9 @@
   padding: 10px;
   border: none;
 }
-.paginate_btn:hover {
+.paginate_btn:hover,
+.paginate_item_active:hover,
+.paginate_item:hover {
   background-color: #ffffff33;
 }
 .paginate_btn:checked {
@@ -221,4 +225,8 @@
 .disabled_btn {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.paginate_item_active {
+  background-color: #ffffff33;
 }
