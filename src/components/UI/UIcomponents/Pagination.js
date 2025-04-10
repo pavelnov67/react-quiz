@@ -56,19 +56,11 @@ const Pagination = ({ id, page, paginate, questionsCount, dataLimit }) => {
               Назад
             </button>
           )}
-          {getPaginationGroup().map((item, index) => (
-            <button
-              key={index}
-              onClick={changePage}
-              className={
-                currentPage === item
-                  ? styles.paginate_item_active
-                  : styles.paginate_item
-              }
-            >
-              <span>{item}</span>
-            </button>
-          ))}{' '}
+          <span className={styles.paginate_item}>стр. </span>
+          <button onClick={changePage} className={styles.paginate_item_active}>
+            <span>{currentPage}</span>
+          </button>
+          <span className={styles.paginate_item}>из {pages}</span>
           {currentPage < pages ? (
             <button className={styles.paginate_btn} onClick={handleNextPage}>
               Вперёд
