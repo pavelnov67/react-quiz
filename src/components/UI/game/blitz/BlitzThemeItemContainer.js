@@ -9,6 +9,7 @@ import BlitzQuestionsContainer from './BlitzQuestionsContainer'
 import Pagination from '../../UIcomponents/Pagination'
 import OffsetContext from './context/OffsetContext'
 import BlitzAddQuestion from './BlitzAddQuestion'
+import Dropdown from '../../UIcomponents/Dropdown'
 
 const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
   const [questionData, setQuestionData] = useState([])
@@ -91,6 +92,7 @@ const BlitzThemeItemContainer = ({ id, title, description, reFetchThemes }) => {
               questionsCount={questionsCount}
               paginate={fetchQuestionsData}
             />
+            <Dropdown />
             <BlitzAddQuestion id={id} />
           </>
         ) : (

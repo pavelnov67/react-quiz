@@ -39,7 +39,10 @@ const Pagination = ({ id, page, paginate, questionsCount, dataLimit }) => {
 
   const getPaginationGroup = () => {
     let start = Math.floor((currentPage - 1) / pages) * pages
-    return new Array(pages).fill().map((_, idx) => start + idx + 1)
+    return new Array(pages)
+      .fill()
+      .map((_, idx) => start + idx + 1)
+      .slice(0, 5)
   }
 
   return (
